@@ -39,6 +39,7 @@ spring cloud demo
         5. compute-service(微服务一号~，可以自己在里面实现业务逻辑)
         6. file-server(文件服务，与compute-service一样，使用fastdfs实现文件上传下载)
         7. turbine-server(断路请求监控服务)
+        8. admin-server(spring boot 服务状态监控)
 
 
 <blockquote>
