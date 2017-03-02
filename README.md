@@ -11,13 +11,12 @@ spring cloud demo
 这个demo能够帮助开发人员快速的搭建起一个spring cloud构建的微服务结构
 ### 未完成事项
 
-> 1-断路器的集群监测
-> 
-> 2-全链路监测
+ 
+> 1-全链路监测
 >
-> 3-网关层的权限控制完善
+> 2-网关层的权限控制完善
 > 
-> 4-权重调整和限流策略
+> 3-权重调整和限流策略
 
 
 
@@ -39,6 +38,7 @@ spring cloud demo
         4. feign-server (负载和断路服务,为后端的其他微服务提供负载功能和快速失败)
         5. compute-service(微服务一号~，可以自己在里面实现业务逻辑)
         6. file-server(文件服务，与compute-service一样，使用fastdfs实现文件上传下载)
+        7. turbine-server(断路请求监控服务)
 
 
 <blockquote>
@@ -63,6 +63,7 @@ spring cloud demo
         2. rabbitmq
         3. thymeleaf(方便测试使用，实际生产环境中使用前后端分离)
         4. bus(通过config-server服务，动态修改该项目配置文件)
+        5. redis
     - 未集成的服务
         1. mongodb
         2. kafka
@@ -79,7 +80,7 @@ spring cloud demo
 5. zuul-server
     - 已经集成的服务
         1. ribbon（zuul本身支持ribbon实现负载）
-        2. redis
+        2. spring session
     - 未集成的服务
         1. 权限控制
         2. 流量限流   
@@ -127,3 +128,4 @@ compute-service-prod.properties
 ### 来自开发者的吐槽
     ps:
     2017-02-28  这里多说一句，提交代码的时候不小心把自己的github账号和密码都提交上来了，被迫已经修改了账号和密码，这脑子，简直了~~~~~
+    2017-03-02  本地仓库出了问题，于是乎删除github上面项目，重新提交
