@@ -55,8 +55,6 @@ spring cloud demo
         1. thymeleaf(方便测试使用，实际生产环境中使用前后端分离)
         2. bus(通过config-server服务，动态修改该项目配置文件)
         3.feign 自动支持hystrix
-    - 未集成的服务
-        1. hystrix 数据的实时/准实时统计服务
 3. compute-service
     - 已经集成的服务
         1. mybatis
