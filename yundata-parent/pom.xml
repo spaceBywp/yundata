@@ -16,6 +16,7 @@
         <module>zuul-server</module>
         <module>file-server</module>
         <module>turbine-server</module>
+        <module>admin-server</module>
     </modules>
 
     <parent>
