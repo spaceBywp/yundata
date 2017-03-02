@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yundata.metadata.dao.mapper.BrandInfoOtherinfoPOMapper" >
+  <resultMap id="BaseResultMap" type="com.yundata.metadata.model.po.BrandInfoOtherinfoPO" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="zch" property="zch" jdbcType="VARCHAR" />
+    <result column="gjfl" property="gjfl" jdbcType="VARCHAR" />
+    <result column="sfgysb" property="sfgysb" jdbcType="VARCHAR" />
+    <result column="sblx" property="sblx" jdbcType="VARCHAR" />
+    <result column="colorgroup" property="colorgroup" jdbcType="DOUBLE" />
+    <result column="hqzdrq" property="hqzdrq" jdbcType="TIMESTAMP" />
+    <result column="gjzcrq" property="gjzcrq" jdbcType="TIMESTAMP" />
+    <result column="yxqrq" property="yxqrq" jdbcType="TIMESTAMP" />
+    <result column="last_update_date" property="lastUpdateDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, zch, gjfl, sfgysb, sblx, colorgroup, hqzdrq, gjzcrq, yxqrq, last_update_date
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yundata.metadata.model.po.BrandInfoOtherinfoPOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from brand_info_otherinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from brand_info_otherinfo
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from brand_info_otherinfo
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yundata.metadata.model.po.BrandInfoOtherinfoPOExample" >
+    delete from brand_info_otherinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yundata.metadata.model.po.BrandInfoOtherinfoPO" >
+    insert into brand_info_otherinfo (id, zch, gjfl, 
+      sfgysb, sblx, colorgroup, 
+      hqzdrq, gjzcrq, yxqrq, 
+      last_update_date)
+    values (#{id,jdbcType=VARCHAR}, #{zch,jdbcType=VARCHAR}, #{gjfl,jdbcType=VARCHAR}, 
+      #{sfgysb,jdbcType=VARCHAR}, #{sblx,jdbcType=VARCHAR}, #{colorgroup,jdbcType=DOUBLE}, 
+      #{hqzdrq,jdbcType=TIMESTAMP}, #{gjzcrq,jdbcType=TIMESTAMP}, #{yxqrq,jdbcType=TIMESTAMP}, 
+      #{lastUpdateDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yundata.metadata.model.po.BrandInfoOtherinfoPO" >
+    insert into brand_info_otherinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="zch != null" >
+        zch,
+      </if>
+      <if test="gjfl != null" >
+        gjfl,
+      </if>
+      <if test="sfgysb != null" >
+        sfgysb,
+      </if>
+      <if test="sblx != null" >
+        sblx,
+      </if>
+      <if test="colorgroup != null" >
+        colorgroup,
+      </if>
+      <if test="hqzdrq != null" >
+        hqzdrq,
+      </if>
+      <if test="gjzcrq != null" >
+        gjzcrq,
+      </if>
+      <if test="yxqrq != null" >
+        yxqrq,
+      </if>
+      <if test="lastUpdateDate != null" >
+        last_update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="zch != null" >
+        #{zch,jdbcType=VARCHAR},
+      </if>
+      <if test="gjfl != null" >
+        #{gjfl,jdbcType=VARCHAR},
+      </if>
+      <if test="sfgysb != null" >
+        #{sfgysb,jdbcType=VARCHAR},
+      </if>
+      <if test="sblx != null" >
+        #{sblx,jdbcType=VARCHAR},
+      </if>
+      <if test="colorgroup != null" >
+        #{colorgroup,jdbcType=DOUBLE},
+      </if>
+      <if test="hqzdrq != null" >
+        #{hqzdrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gjzcrq != null" >
+        #{gjzcrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="yxqrq != null" >
+        #{yxqrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateDate != null" >
+        #{lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yundata.metadata.model.po.BrandInfoOtherinfoPOExample" resultType="java.lang.Integer" >
+    select count(*) from brand_info_otherinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update brand_info_otherinfo
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zch != null" >
+        zch = #{record.zch,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gjfl != null" >
+        gjfl = #{record.gjfl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sfgysb != null" >
+        sfgysb = #{record.sfgysb,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sblx != null" >
+        sblx = #{record.sblx,jdbcType=VARCHAR},
+      </if>
+      <if test="record.colorgroup != null" >
+        colorgroup = #{record.colorgroup,jdbcType=DOUBLE},
+      </if>
+      <if test="record.hqzdrq != null" >
+        hqzdrq = #{record.hqzdrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.gjzcrq != null" >
+        gjzcrq = #{record.gjzcrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.yxqrq != null" >
+        yxqrq = #{record.yxqrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lastUpdateDate != null" >
+        last_update_date = #{record.lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update brand_info_otherinfo
+    set id = #{record.id,jdbcType=VARCHAR},
+      zch = #{record.zch,jdbcType=VARCHAR},
+      gjfl = #{record.gjfl,jdbcType=VARCHAR},
+      sfgysb = #{record.sfgysb,jdbcType=VARCHAR},
+      sblx = #{record.sblx,jdbcType=VARCHAR},
+      colorgroup = #{record.colorgroup,jdbcType=DOUBLE},
+      hqzdrq = #{record.hqzdrq,jdbcType=TIMESTAMP},
+      gjzcrq = #{record.gjzcrq,jdbcType=TIMESTAMP},
+      yxqrq = #{record.yxqrq,jdbcType=TIMESTAMP},
+      last_update_date = #{record.lastUpdateDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yundata.metadata.model.po.BrandInfoOtherinfoPO" >
+    update brand_info_otherinfo
+    <set >
+      <if test="zch != null" >
+        zch = #{zch,jdbcType=VARCHAR},
+      </if>
+      <if test="gjfl != null" >
+        gjfl = #{gjfl,jdbcType=VARCHAR},
+      </if>
+      <if test="sfgysb != null" >
+        sfgysb = #{sfgysb,jdbcType=VARCHAR},
+      </if>
+      <if test="sblx != null" >
+        sblx = #{sblx,jdbcType=VARCHAR},
+      </if>
+      <if test="colorgroup != null" >
+        colorgroup = #{colorgroup,jdbcType=DOUBLE},
+      </if>
+      <if test="hqzdrq != null" >
+        hqzdrq = #{hqzdrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gjzcrq != null" >
+        gjzcrq = #{gjzcrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="yxqrq != null" >
+        yxqrq = #{yxqrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateDate != null" >
+        last_update_date = #{lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yundata.metadata.model.po.BrandInfoOtherinfoPO" >
+    update brand_info_otherinfo
+    set zch = #{zch,jdbcType=VARCHAR},
+      gjfl = #{gjfl,jdbcType=VARCHAR},
+      sfgysb = #{sfgysb,jdbcType=VARCHAR},
+      sblx = #{sblx,jdbcType=VARCHAR},
+      colorgroup = #{colorgroup,jdbcType=DOUBLE},
+      hqzdrq = #{hqzdrq,jdbcType=TIMESTAMP},
+      gjzcrq = #{gjzcrq,jdbcType=TIMESTAMP},
+      yxqrq = #{yxqrq,jdbcType=TIMESTAMP},
+      last_update_date = #{lastUpdateDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

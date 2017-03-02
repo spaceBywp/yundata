@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yundata.metadata.dao.mapper.NameMonitorManagerPOMapper" >
+  <resultMap id="BaseResultMap" type="com.yundata.metadata.model.po.NameMonitorManagerPO" >
+    <id column="name_id" property="nameId" jdbcType="VARCHAR" />
+    <result column="monitor_name" property="monitorName" jdbcType="VARCHAR" />
+    <result column="monitor_type" property="monitorType" jdbcType="VARCHAR" />
+    <result column="monitor_nature" property="monitorNature" jdbcType="VARCHAR" />
+    <result column="monitor_conditions" property="monitorConditions" jdbcType="VARCHAR" />
+    <result column="monitor_category" property="monitorCategory" jdbcType="VARCHAR" />
+    <result column="admin_user_info_id" property="adminUserInfoId" jdbcType="VARCHAR" />
+    <result column="child_user_info_id" property="childUserInfoId" jdbcType="VARCHAR" />
+    <result column="is_attention" property="isAttention" jdbcType="INTEGER" />
+    <result column="monit_status" property="monitStatus" jdbcType="VARCHAR" />
+    <result column="add_time" property="addTime" jdbcType="TIMESTAMP" />
+    <result column="add_user_id" property="addUserId" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="update_user_id" property="updateUserId" jdbcType="VARCHAR" />
+    <result column="is_del" property="isDel" jdbcType="INTEGER" />
+    <result column="sub_user_id" property="subUserId" jdbcType="VARCHAR" />
+    <result column="link_man" property="linkMan" jdbcType="VARCHAR" />
+    <result column="memo" property="memo" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.yundata.metadata.model.po.NameMonitorManagerPO" extends="BaseResultMap" >
+    <result column="context" property="context" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    name_id, monitor_name, monitor_type, monitor_nature, monitor_conditions, monitor_category, 
+    admin_user_info_id, child_user_info_id, is_attention, monit_status, add_time, add_user_id, 
+    update_time, update_user_id, is_del, sub_user_id, link_man, memo
+  </sql>
+  <sql id="Blob_Column_List" >
+    context
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.yundata.metadata.model.po.NameMonitorManagerPOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from name_monitor_manager
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yundata.metadata.model.po.NameMonitorManagerPOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from name_monitor_manager
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from name_monitor_manager
+    where name_id = #{nameId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from name_monitor_manager
+    where name_id = #{nameId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yundata.metadata.model.po.NameMonitorManagerPOExample" >
+    delete from name_monitor_manager
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yundata.metadata.model.po.NameMonitorManagerPO" >
+    insert into name_monitor_manager (name_id, monitor_name, monitor_type, 
+      monitor_nature, monitor_conditions, monitor_category, 
+      admin_user_info_id, child_user_info_id, is_attention, 
+      monit_status, add_time, add_user_id, 
+      update_time, update_user_id, is_del, 
+      sub_user_id, link_man, memo, 
+      context)
+    values (#{nameId,jdbcType=VARCHAR}, #{monitorName,jdbcType=VARCHAR}, #{monitorType,jdbcType=VARCHAR}, 
+      #{monitorNature,jdbcType=VARCHAR}, #{monitorConditions,jdbcType=VARCHAR}, #{monitorCategory,jdbcType=VARCHAR}, 
+      #{adminUserInfoId,jdbcType=VARCHAR}, #{childUserInfoId,jdbcType=VARCHAR}, #{isAttention,jdbcType=INTEGER}, 
+      #{monitStatus,jdbcType=VARCHAR}, #{addTime,jdbcType=TIMESTAMP}, #{addUserId,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{updateUserId,jdbcType=VARCHAR}, #{isDel,jdbcType=INTEGER}, 
+      #{subUserId,jdbcType=VARCHAR}, #{linkMan,jdbcType=VARCHAR}, #{memo,jdbcType=VARCHAR}, 
+      #{context,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yundata.metadata.model.po.NameMonitorManagerPO" >
+    insert into name_monitor_manager
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nameId != null" >
+        name_id,
+      </if>
+      <if test="monitorName != null" >
+        monitor_name,
+      </if>
+      <if test="monitorType != null" >
+        monitor_type,
+      </if>
+      <if test="monitorNature != null" >
+        monitor_nature,
+      </if>
+      <if test="monitorConditions != null" >
+        monitor_conditions,
+      </if>
+      <if test="monitorCategory != null" >
+        monitor_category,
+      </if>
+      <if test="adminUserInfoId != null" >
+        admin_user_info_id,
+      </if>
+      <if test="childUserInfoId != null" >
+        child_user_info_id,
+      </if>
+      <if test="isAttention != null" >
+        is_attention,
+      </if>
+      <if test="monitStatus != null" >
+        monit_status,
+      </if>
+      <if test="addTime != null" >
+        add_time,
+      </if>
+      <if test="addUserId != null" >
+        add_user_id,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id,
+      </if>
+      <if test="isDel != null" >
+        is_del,
+      </if>
+      <if test="subUserId != null" >
+        sub_user_id,
+      </if>
+      <if test="linkMan != null" >
+        link_man,
+      </if>
+      <if test="memo != null" >
+        memo,
+      </if>
+      <if test="context != null" >
+        context,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nameId != null" >
+        #{nameId,jdbcType=VARCHAR},
+      </if>
+      <if test="monitorName != null" >
+        #{monitorName,jdbcType=VARCHAR},
+      </if>
+      <if test="monitorType != null" >
+        #{monitorType,jdbcType=VARCHAR},
+      </if>
+      <if test="monitorNature != null" >
+        #{monitorNature,jdbcType=VARCHAR},
+      </if>
+      <if test="monitorConditions != null" >
+        #{monitorConditions,jdbcType=VARCHAR},
+      </if>
+      <if test="monitorCategory != null" >
+        #{monitorCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="adminUserInfoId != null" >
+        #{adminUserInfoId,jdbcType=VARCHAR},
+      </if>
+      <if test="childUserInfoId != null" >
+        #{childUserInfoId,jdbcType=VARCHAR},
+      </if>
+      <if test="isAttention != null" >
+        #{isAttention,jdbcType=INTEGER},
+      </if>
+      <if test="monitStatus != null" >
+        #{monitStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addUserId != null" >
+        #{addUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null" >
+        #{updateUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="isDel != null" >
+        #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="subUserId != null" >
+        #{subUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="linkMan != null" >
+        #{linkMan,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null" >
+        #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="context != null" >
+        #{context,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yundata.metadata.model.po.NameMonitorManagerPOExample" resultType="java.lang.Integer" >
+    select count(*) from name_monitor_manager
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update name_monitor_manager
+    <set >
+      <if test="record.nameId != null" >
+        name_id = #{record.nameId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.monitorName != null" >
+        monitor_name = #{record.monitorName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.monitorType != null" >
+        monitor_type = #{record.monitorType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.monitorNature != null" >
+        monitor_nature = #{record.monitorNature,jdbcType=VARCHAR},
+      </if>
+      <if test="record.monitorConditions != null" >
+        monitor_conditions = #{record.monitorConditions,jdbcType=VARCHAR},
+      </if>
+      <if test="record.monitorCategory != null" >
+        monitor_category = #{record.monitorCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="record.adminUserInfoId != null" >
+        admin_user_info_id = #{record.adminUserInfoId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.childUserInfoId != null" >
+        child_user_info_id = #{record.childUserInfoId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isAttention != null" >
+        is_attention = #{record.isAttention,jdbcType=INTEGER},
+      </if>
+      <if test="record.monitStatus != null" >
+        monit_status = #{record.monitStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addTime != null" >
+        add_time = #{record.addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.addUserId != null" >
+        add_user_id = #{record.addUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateUserId != null" >
+        update_user_id = #{record.updateUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isDel != null" >
+        is_del = #{record.isDel,jdbcType=INTEGER},
+      </if>
+      <if test="record.subUserId != null" >
+        sub_user_id = #{record.subUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.linkMan != null" >
+        link_man = #{record.linkMan,jdbcType=VARCHAR},
+      </if>
+      <if test="record.memo != null" >
+        memo = #{record.memo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.context != null" >
+        context = #{record.context,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update name_monitor_manager
+    set name_id = #{record.nameId,jdbcType=VARCHAR},
+      monitor_name = #{record.monitorName,jdbcType=VARCHAR},
+      monitor_type = #{record.monitorType,jdbcType=VARCHAR},
+      monitor_nature = #{record.monitorNature,jdbcType=VARCHAR},
+      monitor_conditions = #{record.monitorConditions,jdbcType=VARCHAR},
+      monitor_category = #{record.monitorCategory,jdbcType=VARCHAR},
+      admin_user_info_id = #{record.adminUserInfoId,jdbcType=VARCHAR},
+      child_user_info_id = #{record.childUserInfoId,jdbcType=VARCHAR},
+      is_attention = #{record.isAttention,jdbcType=INTEGER},
+      monit_status = #{record.monitStatus,jdbcType=VARCHAR},
+      add_time = #{record.addTime,jdbcType=TIMESTAMP},
+      add_user_id = #{record.addUserId,jdbcType=VARCHAR},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      update_user_id = #{record.updateUserId,jdbcType=VARCHAR},
+      is_del = #{record.isDel,jdbcType=INTEGER},
+      sub_user_id = #{record.subUserId,jdbcType=VARCHAR},
+      link_man = #{record.linkMan,jdbcType=VARCHAR},
+      memo = #{record.memo,jdbcType=VARCHAR},
+      context = #{record.context,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update name_monitor_manager
+    set name_id = #{record.nameId,jdbcType=VARCHAR},
+      monitor_name = #{record.monitorName,jdbcType=VARCHAR},
+      monitor_type = #{record.monitorType,jdbcType=VARCHAR},
+      monitor_nature = #{record.monitorNature,jdbcType=VARCHAR},
+      monitor_conditions = #{record.monitorConditions,jdbcType=VARCHAR},
+      monitor_category = #{record.monitorCategory,jdbcType=VARCHAR},
+      admin_user_info_id = #{record.adminUserInfoId,jdbcType=VARCHAR},
+      child_user_info_id = #{record.childUserInfoId,jdbcType=VARCHAR},
+      is_attention = #{record.isAttention,jdbcType=INTEGER},
+      monit_status = #{record.monitStatus,jdbcType=VARCHAR},
+      add_time = #{record.addTime,jdbcType=TIMESTAMP},
+      add_user_id = #{record.addUserId,jdbcType=VARCHAR},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      update_user_id = #{record.updateUserId,jdbcType=VARCHAR},
+      is_del = #{record.isDel,jdbcType=INTEGER},
+      sub_user_id = #{record.subUserId,jdbcType=VARCHAR},
+      link_man = #{record.linkMan,jdbcType=VARCHAR},
+      memo = #{record.memo,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yundata.metadata.model.po.NameMonitorManagerPO" >
+    update name_monitor_manager
+    <set >
+      <if test="monitorName != null" >
+        monitor_name = #{monitorName,jdbcType=VARCHAR},
+      </if>
+      <if test="monitorType != null" >
+        monitor_type = #{monitorType,jdbcType=VARCHAR},
+      </if>
+      <if test="monitorNature != null" >
+        monitor_nature = #{monitorNature,jdbcType=VARCHAR},
+      </if>
+      <if test="monitorConditions != null" >
+        monitor_conditions = #{monitorConditions,jdbcType=VARCHAR},
+      </if>
+      <if test="monitorCategory != null" >
+        monitor_category = #{monitorCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="adminUserInfoId != null" >
+        admin_user_info_id = #{adminUserInfoId,jdbcType=VARCHAR},
+      </if>
+      <if test="childUserInfoId != null" >
+        child_user_info_id = #{childUserInfoId,jdbcType=VARCHAR},
+      </if>
+      <if test="isAttention != null" >
+        is_attention = #{isAttention,jdbcType=INTEGER},
+      </if>
+      <if test="monitStatus != null" >
+        monit_status = #{monitStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addUserId != null" >
+        add_user_id = #{addUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id = #{updateUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="isDel != null" >
+        is_del = #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="subUserId != null" >
+        sub_user_id = #{subUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="linkMan != null" >
+        link_man = #{linkMan,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null" >
+        memo = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="context != null" >
+        context = #{context,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where name_id = #{nameId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yundata.metadata.model.po.NameMonitorManagerPO" >
+    update name_monitor_manager
+    set monitor_name = #{monitorName,jdbcType=VARCHAR},
+      monitor_type = #{monitorType,jdbcType=VARCHAR},
+      monitor_nature = #{monitorNature,jdbcType=VARCHAR},
+      monitor_conditions = #{monitorConditions,jdbcType=VARCHAR},
+      monitor_category = #{monitorCategory,jdbcType=VARCHAR},
+      admin_user_info_id = #{adminUserInfoId,jdbcType=VARCHAR},
+      child_user_info_id = #{childUserInfoId,jdbcType=VARCHAR},
+      is_attention = #{isAttention,jdbcType=INTEGER},
+      monit_status = #{monitStatus,jdbcType=VARCHAR},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      add_user_id = #{addUserId,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      update_user_id = #{updateUserId,jdbcType=VARCHAR},
+      is_del = #{isDel,jdbcType=INTEGER},
+      sub_user_id = #{subUserId,jdbcType=VARCHAR},
+      link_man = #{linkMan,jdbcType=VARCHAR},
+      memo = #{memo,jdbcType=VARCHAR},
+      context = #{context,jdbcType=LONGVARCHAR}
+    where name_id = #{nameId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yundata.metadata.model.po.NameMonitorManagerPO" >
+    update name_monitor_manager
+    set monitor_name = #{monitorName,jdbcType=VARCHAR},
+      monitor_type = #{monitorType,jdbcType=VARCHAR},
+      monitor_nature = #{monitorNature,jdbcType=VARCHAR},
+      monitor_conditions = #{monitorConditions,jdbcType=VARCHAR},
+      monitor_category = #{monitorCategory,jdbcType=VARCHAR},
+      admin_user_info_id = #{adminUserInfoId,jdbcType=VARCHAR},
+      child_user_info_id = #{childUserInfoId,jdbcType=VARCHAR},
+      is_attention = #{isAttention,jdbcType=INTEGER},
+      monit_status = #{monitStatus,jdbcType=VARCHAR},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      add_user_id = #{addUserId,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      update_user_id = #{updateUserId,jdbcType=VARCHAR},
+      is_del = #{isDel,jdbcType=INTEGER},
+      sub_user_id = #{subUserId,jdbcType=VARCHAR},
+      link_man = #{linkMan,jdbcType=VARCHAR},
+      memo = #{memo,jdbcType=VARCHAR}
+    where name_id = #{nameId,jdbcType=VARCHAR}
+  </update>
+</mapper>

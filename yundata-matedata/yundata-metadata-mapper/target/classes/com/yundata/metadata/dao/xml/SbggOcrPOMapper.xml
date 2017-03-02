@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yundata.metadata.dao.mapper.SbggOcrPOMapper" >
+  <resultMap id="BaseResultMap" type="com.yundata.metadata.model.po.SbggOcrPO" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="zch" property="zch" jdbcType="VARCHAR" />
+    <result column="page" property="page" jdbcType="INTEGER" />
+    <result column="anchor" property="anchor" jdbcType="VARCHAR" />
+    <result column="sbgg_category" property="sbggCategory" jdbcType="INTEGER" />
+    <result column="sbggqh" property="sbggqh" jdbcType="INTEGER" />
+    <result column="registrant_name_id_card" property="registrantNameIdCard" jdbcType="VARCHAR" />
+    <result column="sqrmc_zw" property="sqrmcZw" jdbcType="VARCHAR" />
+    <result column="dlrmc" property="dlrmc" jdbcType="VARCHAR" />
+    <result column="gjfl" property="gjfl" jdbcType="VARCHAR" />
+    <result column="brand_name" property="brandName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, zch, page, anchor, sbgg_category, sbggqh, registrant_name_id_card, sqrmc_zw, 
+    dlrmc, gjfl, brand_name
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yundata.metadata.model.po.SbggOcrPOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sbgg_ocr
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sbgg_ocr
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sbgg_ocr
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yundata.metadata.model.po.SbggOcrPOExample" >
+    delete from sbgg_ocr
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yundata.metadata.model.po.SbggOcrPO" >
+    insert into sbgg_ocr (id, zch, page, 
+      anchor, sbgg_category, sbggqh, 
+      registrant_name_id_card, sqrmc_zw, dlrmc, 
+      gjfl, brand_name)
+    values (#{id,jdbcType=VARCHAR}, #{zch,jdbcType=VARCHAR}, #{page,jdbcType=INTEGER}, 
+      #{anchor,jdbcType=VARCHAR}, #{sbggCategory,jdbcType=INTEGER}, #{sbggqh,jdbcType=INTEGER}, 
+      #{registrantNameIdCard,jdbcType=VARCHAR}, #{sqrmcZw,jdbcType=VARCHAR}, #{dlrmc,jdbcType=VARCHAR}, 
+      #{gjfl,jdbcType=VARCHAR}, #{brandName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yundata.metadata.model.po.SbggOcrPO" >
+    insert into sbgg_ocr
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="zch != null" >
+        zch,
+      </if>
+      <if test="page != null" >
+        page,
+      </if>
+      <if test="anchor != null" >
+        anchor,
+      </if>
+      <if test="sbggCategory != null" >
+        sbgg_category,
+      </if>
+      <if test="sbggqh != null" >
+        sbggqh,
+      </if>
+      <if test="registrantNameIdCard != null" >
+        registrant_name_id_card,
+      </if>
+      <if test="sqrmcZw != null" >
+        sqrmc_zw,
+      </if>
+      <if test="dlrmc != null" >
+        dlrmc,
+      </if>
+      <if test="gjfl != null" >
+        gjfl,
+      </if>
+      <if test="brandName != null" >
+        brand_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="zch != null" >
+        #{zch,jdbcType=VARCHAR},
+      </if>
+      <if test="page != null" >
+        #{page,jdbcType=INTEGER},
+      </if>
+      <if test="anchor != null" >
+        #{anchor,jdbcType=VARCHAR},
+      </if>
+      <if test="sbggCategory != null" >
+        #{sbggCategory,jdbcType=INTEGER},
+      </if>
+      <if test="sbggqh != null" >
+        #{sbggqh,jdbcType=INTEGER},
+      </if>
+      <if test="registrantNameIdCard != null" >
+        #{registrantNameIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="sqrmcZw != null" >
+        #{sqrmcZw,jdbcType=VARCHAR},
+      </if>
+      <if test="dlrmc != null" >
+        #{dlrmc,jdbcType=VARCHAR},
+      </if>
+      <if test="gjfl != null" >
+        #{gjfl,jdbcType=VARCHAR},
+      </if>
+      <if test="brandName != null" >
+        #{brandName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yundata.metadata.model.po.SbggOcrPOExample" resultType="java.lang.Integer" >
+    select count(*) from sbgg_ocr
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sbgg_ocr
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zch != null" >
+        zch = #{record.zch,jdbcType=VARCHAR},
+      </if>
+      <if test="record.page != null" >
+        page = #{record.page,jdbcType=INTEGER},
+      </if>
+      <if test="record.anchor != null" >
+        anchor = #{record.anchor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sbggCategory != null" >
+        sbgg_category = #{record.sbggCategory,jdbcType=INTEGER},
+      </if>
+      <if test="record.sbggqh != null" >
+        sbggqh = #{record.sbggqh,jdbcType=INTEGER},
+      </if>
+      <if test="record.registrantNameIdCard != null" >
+        registrant_name_id_card = #{record.registrantNameIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sqrmcZw != null" >
+        sqrmc_zw = #{record.sqrmcZw,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dlrmc != null" >
+        dlrmc = #{record.dlrmc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gjfl != null" >
+        gjfl = #{record.gjfl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.brandName != null" >
+        brand_name = #{record.brandName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sbgg_ocr
+    set id = #{record.id,jdbcType=VARCHAR},
+      zch = #{record.zch,jdbcType=VARCHAR},
+      page = #{record.page,jdbcType=INTEGER},
+      anchor = #{record.anchor,jdbcType=VARCHAR},
+      sbgg_category = #{record.sbggCategory,jdbcType=INTEGER},
+      sbggqh = #{record.sbggqh,jdbcType=INTEGER},
+      registrant_name_id_card = #{record.registrantNameIdCard,jdbcType=VARCHAR},
+      sqrmc_zw = #{record.sqrmcZw,jdbcType=VARCHAR},
+      dlrmc = #{record.dlrmc,jdbcType=VARCHAR},
+      gjfl = #{record.gjfl,jdbcType=VARCHAR},
+      brand_name = #{record.brandName,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yundata.metadata.model.po.SbggOcrPO" >
+    update sbgg_ocr
+    <set >
+      <if test="zch != null" >
+        zch = #{zch,jdbcType=VARCHAR},
+      </if>
+      <if test="page != null" >
+        page = #{page,jdbcType=INTEGER},
+      </if>
+      <if test="anchor != null" >
+        anchor = #{anchor,jdbcType=VARCHAR},
+      </if>
+      <if test="sbggCategory != null" >
+        sbgg_category = #{sbggCategory,jdbcType=INTEGER},
+      </if>
+      <if test="sbggqh != null" >
+        sbggqh = #{sbggqh,jdbcType=INTEGER},
+      </if>
+      <if test="registrantNameIdCard != null" >
+        registrant_name_id_card = #{registrantNameIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="sqrmcZw != null" >
+        sqrmc_zw = #{sqrmcZw,jdbcType=VARCHAR},
+      </if>
+      <if test="dlrmc != null" >
+        dlrmc = #{dlrmc,jdbcType=VARCHAR},
+      </if>
+      <if test="gjfl != null" >
+        gjfl = #{gjfl,jdbcType=VARCHAR},
+      </if>
+      <if test="brandName != null" >
+        brand_name = #{brandName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yundata.metadata.model.po.SbggOcrPO" >
+    update sbgg_ocr
+    set zch = #{zch,jdbcType=VARCHAR},
+      page = #{page,jdbcType=INTEGER},
+      anchor = #{anchor,jdbcType=VARCHAR},
+      sbgg_category = #{sbggCategory,jdbcType=INTEGER},
+      sbggqh = #{sbggqh,jdbcType=INTEGER},
+      registrant_name_id_card = #{registrantNameIdCard,jdbcType=VARCHAR},
+      sqrmc_zw = #{sqrmcZw,jdbcType=VARCHAR},
+      dlrmc = #{dlrmc,jdbcType=VARCHAR},
+      gjfl = #{gjfl,jdbcType=VARCHAR},
+      brand_name = #{brandName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

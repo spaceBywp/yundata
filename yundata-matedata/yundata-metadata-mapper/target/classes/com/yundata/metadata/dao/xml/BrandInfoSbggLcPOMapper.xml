@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yundata.metadata.dao.mapper.BrandInfoSbggLcPOMapper" >
+  <resultMap id="BaseResultMap" type="com.yundata.metadata.model.po.BrandInfoSbggLcPO" >
+    <result column="id" property="id" jdbcType="VARCHAR" />
+    <result column="zch" property="zch" jdbcType="VARCHAR" />
+    <result column="gjfl" property="gjfl" jdbcType="VARCHAR" />
+    <result column="issue" property="issue" jdbcType="INTEGER" />
+    <result column="sbgg_category_name" property="sbggCategoryName" jdbcType="VARCHAR" />
+    <result column="page" property="page" jdbcType="INTEGER" />
+    <result column="sbgg_date" property="sbggDate" jdbcType="TIMESTAMP" />
+    <result column="category" property="category" jdbcType="INTEGER" />
+    <result column="lastest" property="lastest" jdbcType="INTEGER" />
+    <result column="registrant_name_id_card" property="registrantNameIdCard" jdbcType="VARCHAR" />
+    <result column="registrant_name" property="registrantName" jdbcType="VARCHAR" />
+    <result column="brand_name" property="brandName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, zch, gjfl, issue, sbgg_category_name, page, sbgg_date, category, lastest, registrant_name_id_card, 
+    registrant_name, brand_name
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yundata.metadata.model.po.BrandInfoSbggLcPOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from brand_info_sbgg_lc
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.yundata.metadata.model.po.BrandInfoSbggLcPOExample" >
+    delete from brand_info_sbgg_lc
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yundata.metadata.model.po.BrandInfoSbggLcPO" >
+    insert into brand_info_sbgg_lc (id, zch, gjfl, 
+      issue, sbgg_category_name, page, 
+      sbgg_date, category, lastest, 
+      registrant_name_id_card, registrant_name, brand_name
+      )
+    values (#{id,jdbcType=VARCHAR}, #{zch,jdbcType=VARCHAR}, #{gjfl,jdbcType=VARCHAR}, 
+      #{issue,jdbcType=INTEGER}, #{sbggCategoryName,jdbcType=VARCHAR}, #{page,jdbcType=INTEGER}, 
+      #{sbggDate,jdbcType=TIMESTAMP}, #{category,jdbcType=INTEGER}, #{lastest,jdbcType=INTEGER}, 
+      #{registrantNameIdCard,jdbcType=VARCHAR}, #{registrantName,jdbcType=VARCHAR}, #{brandName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yundata.metadata.model.po.BrandInfoSbggLcPO" >
+    insert into brand_info_sbgg_lc
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="zch != null" >
+        zch,
+      </if>
+      <if test="gjfl != null" >
+        gjfl,
+      </if>
+      <if test="issue != null" >
+        issue,
+      </if>
+      <if test="sbggCategoryName != null" >
+        sbgg_category_name,
+      </if>
+      <if test="page != null" >
+        page,
+      </if>
+      <if test="sbggDate != null" >
+        sbgg_date,
+      </if>
+      <if test="category != null" >
+        category,
+      </if>
+      <if test="lastest != null" >
+        lastest,
+      </if>
+      <if test="registrantNameIdCard != null" >
+        registrant_name_id_card,
+      </if>
+      <if test="registrantName != null" >
+        registrant_name,
+      </if>
+      <if test="brandName != null" >
+        brand_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="zch != null" >
+        #{zch,jdbcType=VARCHAR},
+      </if>
+      <if test="gjfl != null" >
+        #{gjfl,jdbcType=VARCHAR},
+      </if>
+      <if test="issue != null" >
+        #{issue,jdbcType=INTEGER},
+      </if>
+      <if test="sbggCategoryName != null" >
+        #{sbggCategoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="page != null" >
+        #{page,jdbcType=INTEGER},
+      </if>
+      <if test="sbggDate != null" >
+        #{sbggDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="category != null" >
+        #{category,jdbcType=INTEGER},
+      </if>
+      <if test="lastest != null" >
+        #{lastest,jdbcType=INTEGER},
+      </if>
+      <if test="registrantNameIdCard != null" >
+        #{registrantNameIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="registrantName != null" >
+        #{registrantName,jdbcType=VARCHAR},
+      </if>
+      <if test="brandName != null" >
+        #{brandName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yundata.metadata.model.po.BrandInfoSbggLcPOExample" resultType="java.lang.Integer" >
+    select count(*) from brand_info_sbgg_lc
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update brand_info_sbgg_lc
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zch != null" >
+        zch = #{record.zch,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gjfl != null" >
+        gjfl = #{record.gjfl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.issue != null" >
+        issue = #{record.issue,jdbcType=INTEGER},
+      </if>
+      <if test="record.sbggCategoryName != null" >
+        sbgg_category_name = #{record.sbggCategoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.page != null" >
+        page = #{record.page,jdbcType=INTEGER},
+      </if>
+      <if test="record.sbggDate != null" >
+        sbgg_date = #{record.sbggDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.category != null" >
+        category = #{record.category,jdbcType=INTEGER},
+      </if>
+      <if test="record.lastest != null" >
+        lastest = #{record.lastest,jdbcType=INTEGER},
+      </if>
+      <if test="record.registrantNameIdCard != null" >
+        registrant_name_id_card = #{record.registrantNameIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.registrantName != null" >
+        registrant_name = #{record.registrantName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.brandName != null" >
+        brand_name = #{record.brandName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update brand_info_sbgg_lc
+    set id = #{record.id,jdbcType=VARCHAR},
+      zch = #{record.zch,jdbcType=VARCHAR},
+      gjfl = #{record.gjfl,jdbcType=VARCHAR},
+      issue = #{record.issue,jdbcType=INTEGER},
+      sbgg_category_name = #{record.sbggCategoryName,jdbcType=VARCHAR},
+      page = #{record.page,jdbcType=INTEGER},
+      sbgg_date = #{record.sbggDate,jdbcType=TIMESTAMP},
+      category = #{record.category,jdbcType=INTEGER},
+      lastest = #{record.lastest,jdbcType=INTEGER},
+      registrant_name_id_card = #{record.registrantNameIdCard,jdbcType=VARCHAR},
+      registrant_name = #{record.registrantName,jdbcType=VARCHAR},
+      brand_name = #{record.brandName,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

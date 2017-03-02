@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yundata.metadata.dao.mapper.ApproximateMonitorManagerPOMapper" >
+  <resultMap id="BaseResultMap" type="com.yundata.metadata.model.po.ApproximateMonitorManagerPO" >
+    <id column="approximate_id" property="approximateId" jdbcType="VARCHAR" />
+    <result column="brand_name" property="brandName" jdbcType="VARCHAR" />
+    <result column="regist_num" property="registNum" jdbcType="VARCHAR" />
+    <result column="brand_type" property="brandType" jdbcType="VARCHAR" />
+    <result column="brand_group" property="brandGroup" jdbcType="VARCHAR" />
+    <result column="apply_date" property="applyDate" jdbcType="DATE" />
+    <result column="registrant_name" property="registrantName" jdbcType="VARCHAR" />
+    <result column="registrant_name_id_card" property="registrantNameIdCard" jdbcType="VARCHAR" />
+    <result column="notice_no" property="noticeNo" jdbcType="VARCHAR" />
+    <result column="apply_id" property="applyId" jdbcType="VARCHAR" />
+    <result column="add_type" property="addType" jdbcType="VARCHAR" />
+    <result column="admin_user_info_id" property="adminUserInfoId" jdbcType="VARCHAR" />
+    <result column="child_user_info_id" property="childUserInfoId" jdbcType="VARCHAR" />
+    <result column="monit_status" property="monitStatus" jdbcType="VARCHAR" />
+    <result column="is_attention" property="isAttention" jdbcType="INTEGER" />
+    <result column="add_time" property="addTime" jdbcType="TIMESTAMP" />
+    <result column="add_user_id" property="addUserId" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="update_user_id" property="updateUserId" jdbcType="VARCHAR" />
+    <result column="is_del" property="isDel" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.yundata.metadata.model.po.ApproximateMonitorManagerPO" extends="BaseResultMap" >
+    <result column="context" property="context" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    approximate_id, brand_name, regist_num, brand_type, brand_group, apply_date, registrant_name, 
+    registrant_name_id_card, notice_no, apply_id, add_type, admin_user_info_id, child_user_info_id, 
+    monit_status, is_attention, add_time, add_user_id, update_time, update_user_id, is_del
+  </sql>
+  <sql id="Blob_Column_List" >
+    context
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.yundata.metadata.model.po.ApproximateMonitorManagerPOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from approximate_monitor_manager
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yundata.metadata.model.po.ApproximateMonitorManagerPOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from approximate_monitor_manager
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from approximate_monitor_manager
+    where approximate_id = #{approximateId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from approximate_monitor_manager
+    where approximate_id = #{approximateId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yundata.metadata.model.po.ApproximateMonitorManagerPOExample" >
+    delete from approximate_monitor_manager
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yundata.metadata.model.po.ApproximateMonitorManagerPO" >
+    insert into approximate_monitor_manager (approximate_id, brand_name, regist_num, 
+      brand_type, brand_group, apply_date, 
+      registrant_name, registrant_name_id_card, notice_no, 
+      apply_id, add_type, admin_user_info_id, 
+      child_user_info_id, monit_status, is_attention, 
+      add_time, add_user_id, update_time, 
+      update_user_id, is_del, context
+      )
+    values (#{approximateId,jdbcType=VARCHAR}, #{brandName,jdbcType=VARCHAR}, #{registNum,jdbcType=VARCHAR}, 
+      #{brandType,jdbcType=VARCHAR}, #{brandGroup,jdbcType=VARCHAR}, #{applyDate,jdbcType=DATE}, 
+      #{registrantName,jdbcType=VARCHAR}, #{registrantNameIdCard,jdbcType=VARCHAR}, #{noticeNo,jdbcType=VARCHAR}, 
+      #{applyId,jdbcType=VARCHAR}, #{addType,jdbcType=VARCHAR}, #{adminUserInfoId,jdbcType=VARCHAR}, 
+      #{childUserInfoId,jdbcType=VARCHAR}, #{monitStatus,jdbcType=VARCHAR}, #{isAttention,jdbcType=INTEGER}, 
+      #{addTime,jdbcType=TIMESTAMP}, #{addUserId,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{updateUserId,jdbcType=VARCHAR}, #{isDel,jdbcType=INTEGER}, #{context,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yundata.metadata.model.po.ApproximateMonitorManagerPO" >
+    insert into approximate_monitor_manager
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="approximateId != null" >
+        approximate_id,
+      </if>
+      <if test="brandName != null" >
+        brand_name,
+      </if>
+      <if test="registNum != null" >
+        regist_num,
+      </if>
+      <if test="brandType != null" >
+        brand_type,
+      </if>
+      <if test="brandGroup != null" >
+        brand_group,
+      </if>
+      <if test="applyDate != null" >
+        apply_date,
+      </if>
+      <if test="registrantName != null" >
+        registrant_name,
+      </if>
+      <if test="registrantNameIdCard != null" >
+        registrant_name_id_card,
+      </if>
+      <if test="noticeNo != null" >
+        notice_no,
+      </if>
+      <if test="applyId != null" >
+        apply_id,
+      </if>
+      <if test="addType != null" >
+        add_type,
+      </if>
+      <if test="adminUserInfoId != null" >
+        admin_user_info_id,
+      </if>
+      <if test="childUserInfoId != null" >
+        child_user_info_id,
+      </if>
+      <if test="monitStatus != null" >
+        monit_status,
+      </if>
+      <if test="isAttention != null" >
+        is_attention,
+      </if>
+      <if test="addTime != null" >
+        add_time,
+      </if>
+      <if test="addUserId != null" >
+        add_user_id,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id,
+      </if>
+      <if test="isDel != null" >
+        is_del,
+      </if>
+      <if test="context != null" >
+        context,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="approximateId != null" >
+        #{approximateId,jdbcType=VARCHAR},
+      </if>
+      <if test="brandName != null" >
+        #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="registNum != null" >
+        #{registNum,jdbcType=VARCHAR},
+      </if>
+      <if test="brandType != null" >
+        #{brandType,jdbcType=VARCHAR},
+      </if>
+      <if test="brandGroup != null" >
+        #{brandGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="applyDate != null" >
+        #{applyDate,jdbcType=DATE},
+      </if>
+      <if test="registrantName != null" >
+        #{registrantName,jdbcType=VARCHAR},
+      </if>
+      <if test="registrantNameIdCard != null" >
+        #{registrantNameIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeNo != null" >
+        #{noticeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="applyId != null" >
+        #{applyId,jdbcType=VARCHAR},
+      </if>
+      <if test="addType != null" >
+        #{addType,jdbcType=VARCHAR},
+      </if>
+      <if test="adminUserInfoId != null" >
+        #{adminUserInfoId,jdbcType=VARCHAR},
+      </if>
+      <if test="childUserInfoId != null" >
+        #{childUserInfoId,jdbcType=VARCHAR},
+      </if>
+      <if test="monitStatus != null" >
+        #{monitStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="isAttention != null" >
+        #{isAttention,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null" >
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addUserId != null" >
+        #{addUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null" >
+        #{updateUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="isDel != null" >
+        #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="context != null" >
+        #{context,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yundata.metadata.model.po.ApproximateMonitorManagerPOExample" resultType="java.lang.Integer" >
+    select count(*) from approximate_monitor_manager
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update approximate_monitor_manager
+    <set >
+      <if test="record.approximateId != null" >
+        approximate_id = #{record.approximateId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.brandName != null" >
+        brand_name = #{record.brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.registNum != null" >
+        regist_num = #{record.registNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.brandType != null" >
+        brand_type = #{record.brandType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.brandGroup != null" >
+        brand_group = #{record.brandGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="record.applyDate != null" >
+        apply_date = #{record.applyDate,jdbcType=DATE},
+      </if>
+      <if test="record.registrantName != null" >
+        registrant_name = #{record.registrantName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.registrantNameIdCard != null" >
+        registrant_name_id_card = #{record.registrantNameIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.noticeNo != null" >
+        notice_no = #{record.noticeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.applyId != null" >
+        apply_id = #{record.applyId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addType != null" >
+        add_type = #{record.addType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.adminUserInfoId != null" >
+        admin_user_info_id = #{record.adminUserInfoId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.childUserInfoId != null" >
+        child_user_info_id = #{record.childUserInfoId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.monitStatus != null" >
+        monit_status = #{record.monitStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isAttention != null" >
+        is_attention = #{record.isAttention,jdbcType=INTEGER},
+      </if>
+      <if test="record.addTime != null" >
+        add_time = #{record.addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.addUserId != null" >
+        add_user_id = #{record.addUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateUserId != null" >
+        update_user_id = #{record.updateUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isDel != null" >
+        is_del = #{record.isDel,jdbcType=INTEGER},
+      </if>
+      <if test="record.context != null" >
+        context = #{record.context,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update approximate_monitor_manager
+    set approximate_id = #{record.approximateId,jdbcType=VARCHAR},
+      brand_name = #{record.brandName,jdbcType=VARCHAR},
+      regist_num = #{record.registNum,jdbcType=VARCHAR},
+      brand_type = #{record.brandType,jdbcType=VARCHAR},
+      brand_group = #{record.brandGroup,jdbcType=VARCHAR},
+      apply_date = #{record.applyDate,jdbcType=DATE},
+      registrant_name = #{record.registrantName,jdbcType=VARCHAR},
+      registrant_name_id_card = #{record.registrantNameIdCard,jdbcType=VARCHAR},
+      notice_no = #{record.noticeNo,jdbcType=VARCHAR},
+      apply_id = #{record.applyId,jdbcType=VARCHAR},
+      add_type = #{record.addType,jdbcType=VARCHAR},
+      admin_user_info_id = #{record.adminUserInfoId,jdbcType=VARCHAR},
+      child_user_info_id = #{record.childUserInfoId,jdbcType=VARCHAR},
+      monit_status = #{record.monitStatus,jdbcType=VARCHAR},
+      is_attention = #{record.isAttention,jdbcType=INTEGER},
+      add_time = #{record.addTime,jdbcType=TIMESTAMP},
+      add_user_id = #{record.addUserId,jdbcType=VARCHAR},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      update_user_id = #{record.updateUserId,jdbcType=VARCHAR},
+      is_del = #{record.isDel,jdbcType=INTEGER},
+      context = #{record.context,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update approximate_monitor_manager
+    set approximate_id = #{record.approximateId,jdbcType=VARCHAR},
+      brand_name = #{record.brandName,jdbcType=VARCHAR},
+      regist_num = #{record.registNum,jdbcType=VARCHAR},
+      brand_type = #{record.brandType,jdbcType=VARCHAR},
+      brand_group = #{record.brandGroup,jdbcType=VARCHAR},
+      apply_date = #{record.applyDate,jdbcType=DATE},
+      registrant_name = #{record.registrantName,jdbcType=VARCHAR},
+      registrant_name_id_card = #{record.registrantNameIdCard,jdbcType=VARCHAR},
+      notice_no = #{record.noticeNo,jdbcType=VARCHAR},
+      apply_id = #{record.applyId,jdbcType=VARCHAR},
+      add_type = #{record.addType,jdbcType=VARCHAR},
+      admin_user_info_id = #{record.adminUserInfoId,jdbcType=VARCHAR},
+      child_user_info_id = #{record.childUserInfoId,jdbcType=VARCHAR},
+      monit_status = #{record.monitStatus,jdbcType=VARCHAR},
+      is_attention = #{record.isAttention,jdbcType=INTEGER},
+      add_time = #{record.addTime,jdbcType=TIMESTAMP},
+      add_user_id = #{record.addUserId,jdbcType=VARCHAR},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      update_user_id = #{record.updateUserId,jdbcType=VARCHAR},
+      is_del = #{record.isDel,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yundata.metadata.model.po.ApproximateMonitorManagerPO" >
+    update approximate_monitor_manager
+    <set >
+      <if test="brandName != null" >
+        brand_name = #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="registNum != null" >
+        regist_num = #{registNum,jdbcType=VARCHAR},
+      </if>
+      <if test="brandType != null" >
+        brand_type = #{brandType,jdbcType=VARCHAR},
+      </if>
+      <if test="brandGroup != null" >
+        brand_group = #{brandGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="applyDate != null" >
+        apply_date = #{applyDate,jdbcType=DATE},
+      </if>
+      <if test="registrantName != null" >
+        registrant_name = #{registrantName,jdbcType=VARCHAR},
+      </if>
+      <if test="registrantNameIdCard != null" >
+        registrant_name_id_card = #{registrantNameIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeNo != null" >
+        notice_no = #{noticeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="applyId != null" >
+        apply_id = #{applyId,jdbcType=VARCHAR},
+      </if>
+      <if test="addType != null" >
+        add_type = #{addType,jdbcType=VARCHAR},
+      </if>
+      <if test="adminUserInfoId != null" >
+        admin_user_info_id = #{adminUserInfoId,jdbcType=VARCHAR},
+      </if>
+      <if test="childUserInfoId != null" >
+        child_user_info_id = #{childUserInfoId,jdbcType=VARCHAR},
+      </if>
+      <if test="monitStatus != null" >
+        monit_status = #{monitStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="isAttention != null" >
+        is_attention = #{isAttention,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null" >
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addUserId != null" >
+        add_user_id = #{addUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id = #{updateUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="isDel != null" >
+        is_del = #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="context != null" >
+        context = #{context,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where approximate_id = #{approximateId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yundata.metadata.model.po.ApproximateMonitorManagerPO" >
+    update approximate_monitor_manager
+    set brand_name = #{brandName,jdbcType=VARCHAR},
+      regist_num = #{registNum,jdbcType=VARCHAR},
+      brand_type = #{brandType,jdbcType=VARCHAR},
+      brand_group = #{brandGroup,jdbcType=VARCHAR},
+      apply_date = #{applyDate,jdbcType=DATE},
+      registrant_name = #{registrantName,jdbcType=VARCHAR},
+      registrant_name_id_card = #{registrantNameIdCard,jdbcType=VARCHAR},
+      notice_no = #{noticeNo,jdbcType=VARCHAR},
+      apply_id = #{applyId,jdbcType=VARCHAR},
+      add_type = #{addType,jdbcType=VARCHAR},
+      admin_user_info_id = #{adminUserInfoId,jdbcType=VARCHAR},
+      child_user_info_id = #{childUserInfoId,jdbcType=VARCHAR},
+      monit_status = #{monitStatus,jdbcType=VARCHAR},
+      is_attention = #{isAttention,jdbcType=INTEGER},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      add_user_id = #{addUserId,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      update_user_id = #{updateUserId,jdbcType=VARCHAR},
+      is_del = #{isDel,jdbcType=INTEGER},
+      context = #{context,jdbcType=LONGVARCHAR}
+    where approximate_id = #{approximateId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yundata.metadata.model.po.ApproximateMonitorManagerPO" >
+    update approximate_monitor_manager
+    set brand_name = #{brandName,jdbcType=VARCHAR},
+      regist_num = #{registNum,jdbcType=VARCHAR},
+      brand_type = #{brandType,jdbcType=VARCHAR},
+      brand_group = #{brandGroup,jdbcType=VARCHAR},
+      apply_date = #{applyDate,jdbcType=DATE},
+      registrant_name = #{registrantName,jdbcType=VARCHAR},
+      registrant_name_id_card = #{registrantNameIdCard,jdbcType=VARCHAR},
+      notice_no = #{noticeNo,jdbcType=VARCHAR},
+      apply_id = #{applyId,jdbcType=VARCHAR},
+      add_type = #{addType,jdbcType=VARCHAR},
+      admin_user_info_id = #{adminUserInfoId,jdbcType=VARCHAR},
+      child_user_info_id = #{childUserInfoId,jdbcType=VARCHAR},
+      monit_status = #{monitStatus,jdbcType=VARCHAR},
+      is_attention = #{isAttention,jdbcType=INTEGER},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      add_user_id = #{addUserId,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      update_user_id = #{updateUserId,jdbcType=VARCHAR},
+      is_del = #{isDel,jdbcType=INTEGER}
+    where approximate_id = #{approximateId,jdbcType=VARCHAR}
+  </update>
+</mapper>

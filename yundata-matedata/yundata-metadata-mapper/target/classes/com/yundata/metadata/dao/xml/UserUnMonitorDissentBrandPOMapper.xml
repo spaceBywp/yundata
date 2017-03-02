@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yundata.metadata.dao.mapper.UserUnMonitorDissentBrandPOMapper" >
+  <resultMap id="BaseResultMap" type="com.yundata.metadata.model.po.UserUnMonitorDissentBrandPO" >
+    <id column="brand_id" property="brandId" jdbcType="VARCHAR" />
+    <result column="user_info_id" property="userInfoId" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="zch" property="zch" jdbcType="VARCHAR" />
+    <result column="gjfl" property="gjfl" jdbcType="DOUBLE" />
+    <result column="brand_info_id" property="brandInfoId" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    brand_id, user_info_id, create_date, zch, gjfl, brand_info_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yundata.metadata.model.po.UserUnMonitorDissentBrandPOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from user_un_monitor_dissent_brand
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_un_monitor_dissent_brand
+    where brand_id = #{brandId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from user_un_monitor_dissent_brand
+    where brand_id = #{brandId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yundata.metadata.model.po.UserUnMonitorDissentBrandPOExample" >
+    delete from user_un_monitor_dissent_brand
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yundata.metadata.model.po.UserUnMonitorDissentBrandPO" >
+    insert into user_un_monitor_dissent_brand (brand_id, user_info_id, create_date, 
+      zch, gjfl, brand_info_id
+      )
+    values (#{brandId,jdbcType=VARCHAR}, #{userInfoId,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{zch,jdbcType=VARCHAR}, #{gjfl,jdbcType=DOUBLE}, #{brandInfoId,jdbcType=DOUBLE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yundata.metadata.model.po.UserUnMonitorDissentBrandPO" >
+    insert into user_un_monitor_dissent_brand
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="brandId != null" >
+        brand_id,
+      </if>
+      <if test="userInfoId != null" >
+        user_info_id,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="zch != null" >
+        zch,
+      </if>
+      <if test="gjfl != null" >
+        gjfl,
+      </if>
+      <if test="brandInfoId != null" >
+        brand_info_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="brandId != null" >
+        #{brandId,jdbcType=VARCHAR},
+      </if>
+      <if test="userInfoId != null" >
+        #{userInfoId,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="zch != null" >
+        #{zch,jdbcType=VARCHAR},
+      </if>
+      <if test="gjfl != null" >
+        #{gjfl,jdbcType=DOUBLE},
+      </if>
+      <if test="brandInfoId != null" >
+        #{brandInfoId,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yundata.metadata.model.po.UserUnMonitorDissentBrandPOExample" resultType="java.lang.Integer" >
+    select count(*) from user_un_monitor_dissent_brand
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update user_un_monitor_dissent_brand
+    <set >
+      <if test="record.brandId != null" >
+        brand_id = #{record.brandId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userInfoId != null" >
+        user_info_id = #{record.userInfoId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createDate != null" >
+        create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.zch != null" >
+        zch = #{record.zch,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gjfl != null" >
+        gjfl = #{record.gjfl,jdbcType=DOUBLE},
+      </if>
+      <if test="record.brandInfoId != null" >
+        brand_info_id = #{record.brandInfoId,jdbcType=DOUBLE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update user_un_monitor_dissent_brand
+    set brand_id = #{record.brandId,jdbcType=VARCHAR},
+      user_info_id = #{record.userInfoId,jdbcType=VARCHAR},
+      create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      zch = #{record.zch,jdbcType=VARCHAR},
+      gjfl = #{record.gjfl,jdbcType=DOUBLE},
+      brand_info_id = #{record.brandInfoId,jdbcType=DOUBLE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yundata.metadata.model.po.UserUnMonitorDissentBrandPO" >
+    update user_un_monitor_dissent_brand
+    <set >
+      <if test="userInfoId != null" >
+        user_info_id = #{userInfoId,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="zch != null" >
+        zch = #{zch,jdbcType=VARCHAR},
+      </if>
+      <if test="gjfl != null" >
+        gjfl = #{gjfl,jdbcType=DOUBLE},
+      </if>
+      <if test="brandInfoId != null" >
+        brand_info_id = #{brandInfoId,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where brand_id = #{brandId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yundata.metadata.model.po.UserUnMonitorDissentBrandPO" >
+    update user_un_monitor_dissent_brand
+    set user_info_id = #{userInfoId,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      zch = #{zch,jdbcType=VARCHAR},
+      gjfl = #{gjfl,jdbcType=DOUBLE},
+      brand_info_id = #{brandInfoId,jdbcType=DOUBLE}
+    where brand_id = #{brandId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yundata.metadata.dao.mapper.OfflineDownloadExcelPOMapper" >
+  <resultMap id="BaseResultMap" type="com.yundata.metadata.model.po.OfflineDownloadExcelPO" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="user_info_id" property="userInfoId" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="from_web" property="fromWeb" jdbcType="INTEGER" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="file_path" property="filePath" jdbcType="VARCHAR" />
+    <result column="finish_date" property="finishDate" jdbcType="TIMESTAMP" />
+    <result column="search_content" property="searchContent" jdbcType="VARCHAR" />
+    <result column="search_method" property="searchMethod" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.yundata.metadata.model.po.OfflineDownloadExcelPO" extends="BaseResultMap" >
+    <result column="sql" property="sql" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, user_info_id, email, from_web, create_date, title, status, file_path, finish_date, 
+    search_content, search_method
+  </sql>
+  <sql id="Blob_Column_List" >
+    sql
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.yundata.metadata.model.po.OfflineDownloadExcelPOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from offline_download_excel
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yundata.metadata.model.po.OfflineDownloadExcelPOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from offline_download_excel
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from offline_download_excel
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from offline_download_excel
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yundata.metadata.model.po.OfflineDownloadExcelPOExample" >
+    delete from offline_download_excel
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yundata.metadata.model.po.OfflineDownloadExcelPO" >
+    insert into offline_download_excel (id, user_info_id, email, 
+      from_web, create_date, title, 
+      status, file_path, finish_date, 
+      search_content, search_method, sql
+      )
+    values (#{id,jdbcType=VARCHAR}, #{userInfoId,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{fromWeb,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP}, #{title,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{filePath,jdbcType=VARCHAR}, #{finishDate,jdbcType=TIMESTAMP}, 
+      #{searchContent,jdbcType=VARCHAR}, #{searchMethod,jdbcType=VARCHAR}, #{sql,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yundata.metadata.model.po.OfflineDownloadExcelPO" >
+    insert into offline_download_excel
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userInfoId != null" >
+        user_info_id,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="fromWeb != null" >
+        from_web,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="filePath != null" >
+        file_path,
+      </if>
+      <if test="finishDate != null" >
+        finish_date,
+      </if>
+      <if test="searchContent != null" >
+        search_content,
+      </if>
+      <if test="searchMethod != null" >
+        search_method,
+      </if>
+      <if test="sql != null" >
+        sql,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="userInfoId != null" >
+        #{userInfoId,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="fromWeb != null" >
+        #{fromWeb,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="filePath != null" >
+        #{filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="finishDate != null" >
+        #{finishDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="searchContent != null" >
+        #{searchContent,jdbcType=VARCHAR},
+      </if>
+      <if test="searchMethod != null" >
+        #{searchMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="sql != null" >
+        #{sql,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yundata.metadata.model.po.OfflineDownloadExcelPOExample" resultType="java.lang.Integer" >
+    select count(*) from offline_download_excel
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update offline_download_excel
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userInfoId != null" >
+        user_info_id = #{record.userInfoId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fromWeb != null" >
+        from_web = #{record.fromWeb,jdbcType=INTEGER},
+      </if>
+      <if test="record.createDate != null" >
+        create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.title != null" >
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.filePath != null" >
+        file_path = #{record.filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.finishDate != null" >
+        finish_date = #{record.finishDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.searchContent != null" >
+        search_content = #{record.searchContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.searchMethod != null" >
+        search_method = #{record.searchMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sql != null" >
+        sql = #{record.sql,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update offline_download_excel
+    set id = #{record.id,jdbcType=VARCHAR},
+      user_info_id = #{record.userInfoId,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      from_web = #{record.fromWeb,jdbcType=INTEGER},
+      create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      title = #{record.title,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      file_path = #{record.filePath,jdbcType=VARCHAR},
+      finish_date = #{record.finishDate,jdbcType=TIMESTAMP},
+      search_content = #{record.searchContent,jdbcType=VARCHAR},
+      search_method = #{record.searchMethod,jdbcType=VARCHAR},
+      sql = #{record.sql,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update offline_download_excel
+    set id = #{record.id,jdbcType=VARCHAR},
+      user_info_id = #{record.userInfoId,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      from_web = #{record.fromWeb,jdbcType=INTEGER},
+      create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      title = #{record.title,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      file_path = #{record.filePath,jdbcType=VARCHAR},
+      finish_date = #{record.finishDate,jdbcType=TIMESTAMP},
+      search_content = #{record.searchContent,jdbcType=VARCHAR},
+      search_method = #{record.searchMethod,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yundata.metadata.model.po.OfflineDownloadExcelPO" >
+    update offline_download_excel
+    <set >
+      <if test="userInfoId != null" >
+        user_info_id = #{userInfoId,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="fromWeb != null" >
+        from_web = #{fromWeb,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="filePath != null" >
+        file_path = #{filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="finishDate != null" >
+        finish_date = #{finishDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="searchContent != null" >
+        search_content = #{searchContent,jdbcType=VARCHAR},
+      </if>
+      <if test="searchMethod != null" >
+        search_method = #{searchMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="sql != null" >
+        sql = #{sql,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yundata.metadata.model.po.OfflineDownloadExcelPO" >
+    update offline_download_excel
+    set user_info_id = #{userInfoId,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      from_web = #{fromWeb,jdbcType=INTEGER},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      title = #{title,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      file_path = #{filePath,jdbcType=VARCHAR},
+      finish_date = #{finishDate,jdbcType=TIMESTAMP},
+      search_content = #{searchContent,jdbcType=VARCHAR},
+      search_method = #{searchMethod,jdbcType=VARCHAR},
+      sql = #{sql,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yundata.metadata.model.po.OfflineDownloadExcelPO" >
+    update offline_download_excel
+    set user_info_id = #{userInfoId,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      from_web = #{fromWeb,jdbcType=INTEGER},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      title = #{title,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      file_path = #{filePath,jdbcType=VARCHAR},
+      finish_date = #{finishDate,jdbcType=TIMESTAMP},
+      search_content = #{searchContent,jdbcType=VARCHAR},
+      search_method = #{searchMethod,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yundata.metadata.dao.mapper.BrandInfoGonggaoinfoPOMapper" >
+  <resultMap id="BaseResultMap" type="com.yundata.metadata.model.po.BrandInfoGonggaoinfoPO" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="zch" property="zch" jdbcType="VARCHAR" />
+    <result column="gjfl" property="gjfl" jdbcType="VARCHAR" />
+    <result column="csggqh" property="csggqh" jdbcType="VARCHAR" />
+    <result column="csggrq" property="csggrq" jdbcType="TIMESTAMP" />
+    <result column="zcggqh" property="zcggqh" jdbcType="VARCHAR" />
+    <result column="zcggrq" property="zcggrq" jdbcType="TIMESTAMP" />
+    <result column="zyqqx" property="zyqqx" jdbcType="VARCHAR" />
+    <result column="zyqqx_end" property="zyqqxEnd" jdbcType="TIMESTAMP" />
+    <result column="has_xuzhan" property="hasXuzhan" jdbcType="DOUBLE" />
+    <result column="last_update_date" property="lastUpdateDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, zch, gjfl, csggqh, csggrq, zcggqh, zcggrq, zyqqx, zyqqx_end, has_xuzhan, last_update_date
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yundata.metadata.model.po.BrandInfoGonggaoinfoPOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from brand_info_gonggaoinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from brand_info_gonggaoinfo
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from brand_info_gonggaoinfo
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yundata.metadata.model.po.BrandInfoGonggaoinfoPOExample" >
+    delete from brand_info_gonggaoinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yundata.metadata.model.po.BrandInfoGonggaoinfoPO" >
+    insert into brand_info_gonggaoinfo (id, zch, gjfl, 
+      csggqh, csggrq, zcggqh, 
+      zcggrq, zyqqx, zyqqx_end, 
+      has_xuzhan, last_update_date)
+    values (#{id,jdbcType=VARCHAR}, #{zch,jdbcType=VARCHAR}, #{gjfl,jdbcType=VARCHAR}, 
+      #{csggqh,jdbcType=VARCHAR}, #{csggrq,jdbcType=TIMESTAMP}, #{zcggqh,jdbcType=VARCHAR}, 
+      #{zcggrq,jdbcType=TIMESTAMP}, #{zyqqx,jdbcType=VARCHAR}, #{zyqqxEnd,jdbcType=TIMESTAMP}, 
+      #{hasXuzhan,jdbcType=DOUBLE}, #{lastUpdateDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yundata.metadata.model.po.BrandInfoGonggaoinfoPO" >
+    insert into brand_info_gonggaoinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="zch != null" >
+        zch,
+      </if>
+      <if test="gjfl != null" >
+        gjfl,
+      </if>
+      <if test="csggqh != null" >
+        csggqh,
+      </if>
+      <if test="csggrq != null" >
+        csggrq,
+      </if>
+      <if test="zcggqh != null" >
+        zcggqh,
+      </if>
+      <if test="zcggrq != null" >
+        zcggrq,
+      </if>
+      <if test="zyqqx != null" >
+        zyqqx,
+      </if>
+      <if test="zyqqxEnd != null" >
+        zyqqx_end,
+      </if>
+      <if test="hasXuzhan != null" >
+        has_xuzhan,
+      </if>
+      <if test="lastUpdateDate != null" >
+        last_update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="zch != null" >
+        #{zch,jdbcType=VARCHAR},
+      </if>
+      <if test="gjfl != null" >
+        #{gjfl,jdbcType=VARCHAR},
+      </if>
+      <if test="csggqh != null" >
+        #{csggqh,jdbcType=VARCHAR},
+      </if>
+      <if test="csggrq != null" >
+        #{csggrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="zcggqh != null" >
+        #{zcggqh,jdbcType=VARCHAR},
+      </if>
+      <if test="zcggrq != null" >
+        #{zcggrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="zyqqx != null" >
+        #{zyqqx,jdbcType=VARCHAR},
+      </if>
+      <if test="zyqqxEnd != null" >
+        #{zyqqxEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hasXuzhan != null" >
+        #{hasXuzhan,jdbcType=DOUBLE},
+      </if>
+      <if test="lastUpdateDate != null" >
+        #{lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yundata.metadata.model.po.BrandInfoGonggaoinfoPOExample" resultType="java.lang.Integer" >
+    select count(*) from brand_info_gonggaoinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update brand_info_gonggaoinfo
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zch != null" >
+        zch = #{record.zch,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gjfl != null" >
+        gjfl = #{record.gjfl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.csggqh != null" >
+        csggqh = #{record.csggqh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.csggrq != null" >
+        csggrq = #{record.csggrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.zcggqh != null" >
+        zcggqh = #{record.zcggqh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zcggrq != null" >
+        zcggrq = #{record.zcggrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.zyqqx != null" >
+        zyqqx = #{record.zyqqx,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zyqqxEnd != null" >
+        zyqqx_end = #{record.zyqqxEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.hasXuzhan != null" >
+        has_xuzhan = #{record.hasXuzhan,jdbcType=DOUBLE},
+      </if>
+      <if test="record.lastUpdateDate != null" >
+        last_update_date = #{record.lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update brand_info_gonggaoinfo
+    set id = #{record.id,jdbcType=VARCHAR},
+      zch = #{record.zch,jdbcType=VARCHAR},
+      gjfl = #{record.gjfl,jdbcType=VARCHAR},
+      csggqh = #{record.csggqh,jdbcType=VARCHAR},
+      csggrq = #{record.csggrq,jdbcType=TIMESTAMP},
+      zcggqh = #{record.zcggqh,jdbcType=VARCHAR},
+      zcggrq = #{record.zcggrq,jdbcType=TIMESTAMP},
+      zyqqx = #{record.zyqqx,jdbcType=VARCHAR},
+      zyqqx_end = #{record.zyqqxEnd,jdbcType=TIMESTAMP},
+      has_xuzhan = #{record.hasXuzhan,jdbcType=DOUBLE},
+      last_update_date = #{record.lastUpdateDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yundata.metadata.model.po.BrandInfoGonggaoinfoPO" >
+    update brand_info_gonggaoinfo
+    <set >
+      <if test="zch != null" >
+        zch = #{zch,jdbcType=VARCHAR},
+      </if>
+      <if test="gjfl != null" >
+        gjfl = #{gjfl,jdbcType=VARCHAR},
+      </if>
+      <if test="csggqh != null" >
+        csggqh = #{csggqh,jdbcType=VARCHAR},
+      </if>
+      <if test="csggrq != null" >
+        csggrq = #{csggrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="zcggqh != null" >
+        zcggqh = #{zcggqh,jdbcType=VARCHAR},
+      </if>
+      <if test="zcggrq != null" >
+        zcggrq = #{zcggrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="zyqqx != null" >
+        zyqqx = #{zyqqx,jdbcType=VARCHAR},
+      </if>
+      <if test="zyqqxEnd != null" >
+        zyqqx_end = #{zyqqxEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hasXuzhan != null" >
+        has_xuzhan = #{hasXuzhan,jdbcType=DOUBLE},
+      </if>
+      <if test="lastUpdateDate != null" >
+        last_update_date = #{lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yundata.metadata.model.po.BrandInfoGonggaoinfoPO" >
+    update brand_info_gonggaoinfo
+    set zch = #{zch,jdbcType=VARCHAR},
+      gjfl = #{gjfl,jdbcType=VARCHAR},
+      csggqh = #{csggqh,jdbcType=VARCHAR},
+      csggrq = #{csggrq,jdbcType=TIMESTAMP},
+      zcggqh = #{zcggqh,jdbcType=VARCHAR},
+      zcggrq = #{zcggrq,jdbcType=TIMESTAMP},
+      zyqqx = #{zyqqx,jdbcType=VARCHAR},
+      zyqqx_end = #{zyqqxEnd,jdbcType=TIMESTAMP},
+      has_xuzhan = #{hasXuzhan,jdbcType=DOUBLE},
+      last_update_date = #{lastUpdateDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
