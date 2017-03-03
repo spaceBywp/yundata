@@ -64,10 +64,9 @@ spring cloud demo
         4. bus(通过config-server服务，动态修改该项目配置文件)
         5. redis
     - 未集成的服务
-        1. mongodb
-        2. kafka
-        3. elasticsearch
-        4. 根据自身的业务需求所需的其他服务
+        1. kafka
+        2. elasticsearch
+        3. 根据自身的业务需求所需的其他服务
 4. file-server
     - 已经集成的服务
         1. mybatis
