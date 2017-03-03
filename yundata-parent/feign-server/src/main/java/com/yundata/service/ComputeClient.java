@@ -17,4 +17,5 @@ public interface ComputeClient {
 
     @RequestMapping(value = "/app")
     String app(@RequestParam(value = "a") Integer a, @RequestParam(value = "b") Integer b);
+
 }

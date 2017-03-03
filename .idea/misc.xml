@@ -6,8 +6,17 @@
         <option value="$PROJECT_DIR$/yundata-common/pom.xml" />
         <option value="$PROJECT_DIR$/yundata-matedata/pom.xml" />
         <option value="$PROJECT_DIR$/yundata-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/zipkin-server/pom.xml" />
+        <option value="$PROJECT_DIR$/zipkin-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/zipkin/pom.xml" />
       </list>
     </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/yundata-parent/seulth-server/pom.xml" />
+        <option value="$PROJECT_DIR$/yundata-parent/zipkin-server/pom.xml" />
+      </set>
+    </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_3" default="false" project-jdk-name="1.7" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_3" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
 </project>

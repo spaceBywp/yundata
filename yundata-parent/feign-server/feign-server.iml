@@ -138,6 +138,11 @@
     <orderEntry type="library" name="Maven: commons-collections:commons-collections:3.2.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.1" level="project" />
     <orderEntry type="library" name="Maven: org.ow2.asm:asm:5.0.4" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter-sleuth:1.0.1.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-sleuth-core:1.0.1.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.aspectj:aspectjrt:1.8.9" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-sleuth-zipkin:1.0.1.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: io.zipkin.java:zipkin:1.1.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:springloaded:1.2.6.RELEASE" level="project" />
     <orderEntry type="module" module-name="yundata-common" />
     <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.3.1" level="project" />

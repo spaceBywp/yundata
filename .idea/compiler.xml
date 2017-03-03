@@ -18,6 +18,7 @@
         <module name="yundata-metadata-mapper" />
         <module name="yundata-metadata-model" />
         <module name="yundata-metadata-mongo" />
+        <module name="zipkin" />
         <module name="zuul-server" />
       </profile>
     </annotationProcessing>
@@ -25,9 +26,11 @@
       <module name="admin-server" target="1.6" />
       <module name="compute-service" target="1.6" />
       <module name="config-server" target="1.6" />
+      <module name="demo" target="1.6" />
       <module name="eureka-server" target="1.6" />
       <module name="feign-server" target="1.6" />
       <module name="file-server" target="1.6" />
+      <module name="seulth-server" target="1.6" />
       <module name="turbine-server" target="1.6" />
       <module name="yundata-common" target="1.5" />
       <module name="yundata-matedata" target="1.5" />
@@ -36,6 +39,8 @@
       <module name="yundata-metadata-model" target="1.7" />
       <module name="yundata-metadata-mongo" target="1.5" />
       <module name="yundata-parent" target="1.6" />
+      <module name="zipkin" target="1.6" />
+      <module name="zipkin-server" target="1.6" />
       <module name="zuul-server" target="1.6" />
     </bytecodeTargetLevel>
   </component>

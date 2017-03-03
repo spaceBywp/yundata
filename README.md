@@ -12,11 +12,10 @@ spring cloud demo
 ### 未完成事项
 
  
-> 1-全链路监测
->
-> 2-网关层的权限控制完善
+
+> 1-网关层的权限控制完善
 > 
-> 3-权重调整和限流策略
+> 2-权重调整和限流策略
 
 
 
@@ -35,11 +34,12 @@ spring cloud demo
         1. eureka-server（分布式服务的注册中心）
         2. config-server（配置文件服务，为其他服务提供配置文件信息）
         3. zuul-server (网关服务，对外屏蔽内部api接口，可以进行权限验证和限流(没有研究到))
-        4. feign-server (负载和断路服务,为后端的其他微服务提供负载功能和快速失败)
+        4. feign-server (负载和断路服务,为后端的其他微服务提供负载功能和快速失败,链路检测)
         5. compute-service(微服务一号~，可以自己在里面实现业务逻辑)
         6. file-server(文件服务，与compute-service一样，使用fastdfs实现文件上传下载)
         7. turbine-server(断路请求监控服务)
         8. admin-server(spring boot 服务状态监控)
+    - zipkin （全链路监测ui）
 
 
 <blockquote>
@@ -55,7 +55,8 @@ spring cloud demo
     - 已经集成的服务
         1. thymeleaf(方便测试使用，实际生产环境中使用前后端分离)
         2. bus(通过config-server服务，动态修改该项目配置文件)
-        3.feign 自动支持hystrix
+        3. feign 自动支持hystrix
+        4. sleuth 链路监测
 3. compute-service
     - 已经集成的服务
         1. mybatis
@@ -82,6 +83,9 @@ spring cloud demo
     - 未集成的服务
         1. 权限控制
         2. 流量限流   
+6. zipkin 
+    - 已集成 ui
+        实现全链路监测可视化
 <blockquote>
 <p>服务所需的环境搭建</p>
 </blockquote>
