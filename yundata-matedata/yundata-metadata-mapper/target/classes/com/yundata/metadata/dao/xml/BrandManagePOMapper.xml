@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yundata.metadata.dao.mapper.BrandManagePOMapper" >
+  <resultMap id="BaseResultMap" type="com.yundata.metadata.model.po.BrandManagePO" >
+    <id column="brand_type" property="brandType" jdbcType="VARCHAR" />
+    <id column="regist_num" property="registNum" jdbcType="VARCHAR" />
+    <id column="admin_user_info_id" property="adminUserInfoId" jdbcType="VARCHAR" />
+    <result column="id" property="id" jdbcType="VARCHAR" />
+    <result column="brand_name" property="brandName" jdbcType="VARCHAR" />
+    <result column="registrant_name_id_card" property="registrantNameIdCard" jdbcType="VARCHAR" />
+    <result column="registrant_name" property="registrantName" jdbcType="VARCHAR" />
+    <result column="registrant_time" property="registrantTime" jdbcType="TIMESTAMP" />
+    <result column="dljg_name" property="dljgName" jdbcType="VARCHAR" />
+    <result column="in_notice" property="inNotice" jdbcType="INTEGER" />
+    <result column="in_similar" property="inSimilar" jdbcType="INTEGER" />
+    <result column="in_status" property="inStatus" jdbcType="INTEGER" />
+    <result column="child_user_info_id" property="childUserInfoId" jdbcType="VARCHAR" />
+    <result column="brand_status" property="brandStatus" jdbcType="INTEGER" />
+    <result column="add_time" property="addTime" jdbcType="TIMESTAMP" />
+    <result column="add_user_id" property="addUserId" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="update_user_id" property="updateUserId" jdbcType="VARCHAR" />
+    <result column="is_del" property="isDel" jdbcType="INTEGER" />
+    <result column="apply_id" property="applyId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    brand_type, regist_num, admin_user_info_id, id, brand_name, registrant_name_id_card, 
+    registrant_name, registrant_time, dljg_name, in_notice, in_similar, in_status, child_user_info_id, 
+    brand_status, add_time, add_user_id, update_time, update_user_id, is_del, apply_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yundata.metadata.model.po.BrandManagePOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from brand_manage
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.yundata.metadata.model.po.BrandManagePOKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from brand_manage
+    where brand_type = #{brandType,jdbcType=VARCHAR}
+      and regist_num = #{registNum,jdbcType=VARCHAR}
+      and admin_user_info_id = #{adminUserInfoId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.yundata.metadata.model.po.BrandManagePOKey" >
+    delete from brand_manage
+    where brand_type = #{brandType,jdbcType=VARCHAR}
+      and regist_num = #{registNum,jdbcType=VARCHAR}
+      and admin_user_info_id = #{adminUserInfoId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yundata.metadata.model.po.BrandManagePOExample" >
+    delete from brand_manage
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yundata.metadata.model.po.BrandManagePO" >
+    insert into brand_manage (brand_type, regist_num, admin_user_info_id, 
+      id, brand_name, registrant_name_id_card, 
+      registrant_name, registrant_time, dljg_name, 
+      in_notice, in_similar, in_status, 
+      child_user_info_id, brand_status, add_time, 
+      add_user_id, update_time, update_user_id, 
+      is_del, apply_id)
+    values (#{brandType,jdbcType=VARCHAR}, #{registNum,jdbcType=VARCHAR}, #{adminUserInfoId,jdbcType=VARCHAR}, 
+      #{id,jdbcType=VARCHAR}, #{brandName,jdbcType=VARCHAR}, #{registrantNameIdCard,jdbcType=VARCHAR}, 
+      #{registrantName,jdbcType=VARCHAR}, #{registrantTime,jdbcType=TIMESTAMP}, #{dljgName,jdbcType=VARCHAR}, 
+      #{inNotice,jdbcType=INTEGER}, #{inSimilar,jdbcType=INTEGER}, #{inStatus,jdbcType=INTEGER}, 
+      #{childUserInfoId,jdbcType=VARCHAR}, #{brandStatus,jdbcType=INTEGER}, #{addTime,jdbcType=TIMESTAMP}, 
+      #{addUserId,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{updateUserId,jdbcType=VARCHAR}, 
+      #{isDel,jdbcType=INTEGER}, #{applyId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yundata.metadata.model.po.BrandManagePO" >
+    insert into brand_manage
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="brandType != null" >
+        brand_type,
+      </if>
+      <if test="registNum != null" >
+        regist_num,
+      </if>
+      <if test="adminUserInfoId != null" >
+        admin_user_info_id,
+      </if>
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="brandName != null" >
+        brand_name,
+      </if>
+      <if test="registrantNameIdCard != null" >
+        registrant_name_id_card,
+      </if>
+      <if test="registrantName != null" >
+        registrant_name,
+      </if>
+      <if test="registrantTime != null" >
+        registrant_time,
+      </if>
+      <if test="dljgName != null" >
+        dljg_name,
+      </if>
+      <if test="inNotice != null" >
+        in_notice,
+      </if>
+      <if test="inSimilar != null" >
+        in_similar,
+      </if>
+      <if test="inStatus != null" >
+        in_status,
+      </if>
+      <if test="childUserInfoId != null" >
+        child_user_info_id,
+      </if>
+      <if test="brandStatus != null" >
+        brand_status,
+      </if>
+      <if test="addTime != null" >
+        add_time,
+      </if>
+      <if test="addUserId != null" >
+        add_user_id,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id,
+      </if>
+      <if test="isDel != null" >
+        is_del,
+      </if>
+      <if test="applyId != null" >
+        apply_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="brandType != null" >
+        #{brandType,jdbcType=VARCHAR},
+      </if>
+      <if test="registNum != null" >
+        #{registNum,jdbcType=VARCHAR},
+      </if>
+      <if test="adminUserInfoId != null" >
+        #{adminUserInfoId,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="brandName != null" >
+        #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="registrantNameIdCard != null" >
+        #{registrantNameIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="registrantName != null" >
+        #{registrantName,jdbcType=VARCHAR},
+      </if>
+      <if test="registrantTime != null" >
+        #{registrantTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dljgName != null" >
+        #{dljgName,jdbcType=VARCHAR},
+      </if>
+      <if test="inNotice != null" >
+        #{inNotice,jdbcType=INTEGER},
+      </if>
+      <if test="inSimilar != null" >
+        #{inSimilar,jdbcType=INTEGER},
+      </if>
+      <if test="inStatus != null" >
+        #{inStatus,jdbcType=INTEGER},
+      </if>
+      <if test="childUserInfoId != null" >
+        #{childUserInfoId,jdbcType=VARCHAR},
+      </if>
+      <if test="brandStatus != null" >
+        #{brandStatus,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null" >
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addUserId != null" >
+        #{addUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null" >
+        #{updateUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="isDel != null" >
+        #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="applyId != null" >
+        #{applyId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yundata.metadata.model.po.BrandManagePOExample" resultType="java.lang.Integer" >
+    select count(*) from brand_manage
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update brand_manage
+    <set >
+      <if test="record.brandType != null" >
+        brand_type = #{record.brandType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.registNum != null" >
+        regist_num = #{record.registNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.adminUserInfoId != null" >
+        admin_user_info_id = #{record.adminUserInfoId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.brandName != null" >
+        brand_name = #{record.brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.registrantNameIdCard != null" >
+        registrant_name_id_card = #{record.registrantNameIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.registrantName != null" >
+        registrant_name = #{record.registrantName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.registrantTime != null" >
+        registrant_time = #{record.registrantTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.dljgName != null" >
+        dljg_name = #{record.dljgName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.inNotice != null" >
+        in_notice = #{record.inNotice,jdbcType=INTEGER},
+      </if>
+      <if test="record.inSimilar != null" >
+        in_similar = #{record.inSimilar,jdbcType=INTEGER},
+      </if>
+      <if test="record.inStatus != null" >
+        in_status = #{record.inStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.childUserInfoId != null" >
+        child_user_info_id = #{record.childUserInfoId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.brandStatus != null" >
+        brand_status = #{record.brandStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.addTime != null" >
+        add_time = #{record.addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.addUserId != null" >
+        add_user_id = #{record.addUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateUserId != null" >
+        update_user_id = #{record.updateUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isDel != null" >
+        is_del = #{record.isDel,jdbcType=INTEGER},
+      </if>
+      <if test="record.applyId != null" >
+        apply_id = #{record.applyId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update brand_manage
+    set brand_type = #{record.brandType,jdbcType=VARCHAR},
+      regist_num = #{record.registNum,jdbcType=VARCHAR},
+      admin_user_info_id = #{record.adminUserInfoId,jdbcType=VARCHAR},
+      id = #{record.id,jdbcType=VARCHAR},
+      brand_name = #{record.brandName,jdbcType=VARCHAR},
+      registrant_name_id_card = #{record.registrantNameIdCard,jdbcType=VARCHAR},
+      registrant_name = #{record.registrantName,jdbcType=VARCHAR},
+      registrant_time = #{record.registrantTime,jdbcType=TIMESTAMP},
+      dljg_name = #{record.dljgName,jdbcType=VARCHAR},
+      in_notice = #{record.inNotice,jdbcType=INTEGER},
+      in_similar = #{record.inSimilar,jdbcType=INTEGER},
+      in_status = #{record.inStatus,jdbcType=INTEGER},
+      child_user_info_id = #{record.childUserInfoId,jdbcType=VARCHAR},
+      brand_status = #{record.brandStatus,jdbcType=INTEGER},
+      add_time = #{record.addTime,jdbcType=TIMESTAMP},
+      add_user_id = #{record.addUserId,jdbcType=VARCHAR},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      update_user_id = #{record.updateUserId,jdbcType=VARCHAR},
+      is_del = #{record.isDel,jdbcType=INTEGER},
+      apply_id = #{record.applyId,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yundata.metadata.model.po.BrandManagePO" >
+    update brand_manage
+    <set >
+      <if test="id != null" >
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="brandName != null" >
+        brand_name = #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="registrantNameIdCard != null" >
+        registrant_name_id_card = #{registrantNameIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="registrantName != null" >
+        registrant_name = #{registrantName,jdbcType=VARCHAR},
+      </if>
+      <if test="registrantTime != null" >
+        registrant_time = #{registrantTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dljgName != null" >
+        dljg_name = #{dljgName,jdbcType=VARCHAR},
+      </if>
+      <if test="inNotice != null" >
+        in_notice = #{inNotice,jdbcType=INTEGER},
+      </if>
+      <if test="inSimilar != null" >
+        in_similar = #{inSimilar,jdbcType=INTEGER},
+      </if>
+      <if test="inStatus != null" >
+        in_status = #{inStatus,jdbcType=INTEGER},
+      </if>
+      <if test="childUserInfoId != null" >
+        child_user_info_id = #{childUserInfoId,jdbcType=VARCHAR},
+      </if>
+      <if test="brandStatus != null" >
+        brand_status = #{brandStatus,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null" >
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addUserId != null" >
+        add_user_id = #{addUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id = #{updateUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="isDel != null" >
+        is_del = #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="applyId != null" >
+        apply_id = #{applyId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where brand_type = #{brandType,jdbcType=VARCHAR}
+      and regist_num = #{registNum,jdbcType=VARCHAR}
+      and admin_user_info_id = #{adminUserInfoId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yundata.metadata.model.po.BrandManagePO" >
+    update brand_manage
+    set id = #{id,jdbcType=VARCHAR},
+      brand_name = #{brandName,jdbcType=VARCHAR},
+      registrant_name_id_card = #{registrantNameIdCard,jdbcType=VARCHAR},
+      registrant_name = #{registrantName,jdbcType=VARCHAR},
+      registrant_time = #{registrantTime,jdbcType=TIMESTAMP},
+      dljg_name = #{dljgName,jdbcType=VARCHAR},
+      in_notice = #{inNotice,jdbcType=INTEGER},
+      in_similar = #{inSimilar,jdbcType=INTEGER},
+      in_status = #{inStatus,jdbcType=INTEGER},
+      child_user_info_id = #{childUserInfoId,jdbcType=VARCHAR},
+      brand_status = #{brandStatus,jdbcType=INTEGER},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      add_user_id = #{addUserId,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      update_user_id = #{updateUserId,jdbcType=VARCHAR},
+      is_del = #{isDel,jdbcType=INTEGER},
+      apply_id = #{applyId,jdbcType=VARCHAR}
+    where brand_type = #{brandType,jdbcType=VARCHAR}
+      and regist_num = #{registNum,jdbcType=VARCHAR}
+      and admin_user_info_id = #{adminUserInfoId,jdbcType=VARCHAR}
+  </update>
+</mapper>
