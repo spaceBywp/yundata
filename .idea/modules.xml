@@ -15,6 +15,7 @@
       <module fileurl="file://$PROJECT_DIR$/yundata-matedata/yundata-metadata-generator/yundata-metadata-generator.iml" filepath="$PROJECT_DIR$/yundata-matedata/yundata-metadata-generator/yundata-metadata-generator.iml" />
       <module fileurl="file://$PROJECT_DIR$/yundata-matedata/yundata-metadata-mapper/yundata-metadata-mapper.iml" filepath="$PROJECT_DIR$/yundata-matedata/yundata-metadata-mapper/yundata-metadata-mapper.iml" />
       <module fileurl="file://$PROJECT_DIR$/yundata-matedata/yundata-metadata-model/yundata-metadata-model.iml" filepath="$PROJECT_DIR$/yundata-matedata/yundata-metadata-model/yundata-metadata-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yundata-matedata/yundata-metadata-mongo/yundata-metadata-mongo.iml" filepath="$PROJECT_DIR$/yundata-matedata/yundata-metadata-mongo/yundata-metadata-mongo.iml" />
       <module fileurl="file://$PROJECT_DIR$/yundata-parent/yundata-parent.iml" filepath="$PROJECT_DIR$/yundata-parent/yundata-parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/yundata-parent/zuul-server/zuul-server.iml" filepath="$PROJECT_DIR$/yundata-parent/zuul-server/zuul-server.iml" />
     </modules>

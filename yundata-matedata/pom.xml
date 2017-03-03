@@ -12,6 +12,7 @@
         <module>yundata-metadata-mapper</module>
         <module>yundata-metadata-generator</module>
         <module>yundata-metadata-model</module>
+        <module>yundata-metadata-mongo</module>
     </modules>
 
 </project>

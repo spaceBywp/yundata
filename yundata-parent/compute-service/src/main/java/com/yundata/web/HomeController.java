@@ -1,8 +1,11 @@
 package com.yundata.web;
 
+import com.yundata.demo.DemoCollection;
+import com.yundata.demo.model.test;
 import com.yundata.metadata.dao.mapper.UserInfoPOMapper;
 import com.yundata.metadata.model.po.UserInfoPO;
 import com.yundata.metadata.model.po.UserInfoPOExample;
+import com.yundata.mongo.DemoCollectionRepository;
 import com.yundata.tasks.DynamicScheduledTask;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +18,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by liangchong998 on 2016/8/18.
@@ -32,6 +37,9 @@ public class HomeController {
 
     @Autowired
     DynamicScheduledTask dynamicScheduledTask;
+
+    @Autowired
+    DemoCollectionRepository demoCollectionRepository;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     @Cacheable(value = "reportcache", keyGenerator = "wiselyKeyGenerator")
@@ -69,5 +77,38 @@ public class HomeController {
     public String updateDynamicScheduledTask2() {
         dynamicScheduledTask.setCron2("0/10 * * * * ?");
         return "ok";
+    }
+
+    @RequestMapping("/mongott")
+    public String mongottt() {
+        List<test> list = new ArrayList<test>();
+        test tr = new test();
+        test tr2 = new test();
+
+        tr.setBbb(111);
+        tr.setAaa(222);
+
+        tr2.setAaa(333);
+        tr2.setBbb(444);
+
+        list.add(tr);
+
+        list.add(tr);
+        list.add(tr2);
+        DemoCollection demoCollection = new DemoCollection();
+
+        demoCollection.setTt(tr);
+
+        demoCollection.setId("123123123123123");
+        demoCollection.setName("alibaba");
+        demoCollection.setTtt(list);
+
+        demoCollectionRepository.save(demoCollection);
+
+        demoCollectionRepository.findAll();
+
+
+        System.out.println(demoCollectionRepository.findAll());
+        return "index";
     }
 }

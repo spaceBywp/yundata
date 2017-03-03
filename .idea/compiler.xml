@@ -17,6 +17,7 @@
         <module name="yundata-metadata-generator" />
         <module name="yundata-metadata-mapper" />
         <module name="yundata-metadata-model" />
+        <module name="yundata-metadata-mongo" />
         <module name="zuul-server" />
       </profile>
     </annotationProcessing>
@@ -33,6 +34,7 @@
       <module name="yundata-metadata-generator" target="1.5" />
       <module name="yundata-metadata-mapper" target="1.7" />
       <module name="yundata-metadata-model" target="1.7" />
+      <module name="yundata-metadata-mongo" target="1.5" />
       <module name="yundata-parent" target="1.6" />
       <module name="zuul-server" target="1.6" />
     </bytecodeTargetLevel>
