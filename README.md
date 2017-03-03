@@ -91,17 +91,21 @@ spring cloud demo
 </blockquote>
 
 > rabbitMq 
->> 安装教程[点击这里看看][1]
+>> 安装教程[Quick Start][1]
 
 > mysql安装教程
->> 安装教程[点击这里看看][2]
+>> 安装教程[Quick Start][2]
 
 > fastdfs
->> 安装教程[点击这里看看][3]
+>> 安装教程[Quick Start][3]
+
+> mongodb 教程
+>> 安装和使用[Quick Start][4]
 
 [1]: http://xpenxpen.iteye.com/blog/1474608/
 [2]: http://blog.csdn.net/qq_27376871/article/details/51279211/
 [3]: http://blog.csdn.net/xyang81/article/details/52837974
+[4]: http://www.yiibai.com/mongodb/mongodb_quick_guide.html
 
 ### 特别注意
         config-server中需要配置github(或者其他服务，本地目录，项目本身)
