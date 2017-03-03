@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yundata.metadata.dao.mapper.UserInfoPOMapper" >
+  <resultMap id="BaseResultMap" type="com.yundata.metadata.model.po.UserInfoPO" >
+    <id column="user_info_id" property="userInfoId" jdbcType="VARCHAR" />
+    <result column="category" property="category" jdbcType="INTEGER" />
+    <result column="login_code" property="loginCode" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="apply_user_personal_idcard" property="applyUserPersonalIdcard" jdbcType="VARCHAR" />
+    <result column="apply_user_id" property="applyUserId" jdbcType="VARCHAR" />
+    <result column="corp_dljg_id" property="corpDljgId" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="qq" property="qq" jdbcType="VARCHAR" />
+    <result column="reg_date" property="regDate" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="active_code" property="activeCode" jdbcType="VARCHAR" />
+    <result column="is_corp_admin" property="isCorpAdmin" jdbcType="INTEGER" />
+    <result column="other_corp_name" property="otherCorpName" jdbcType="VARCHAR" />
+    <result column="last_login_date" property="lastLoginDate" jdbcType="TIMESTAMP" />
+    <result column="parent_id" property="parentId" jdbcType="VARCHAR" />
+    <result column="membership_level" property="membershipLevel" jdbcType="VARCHAR" />
+    <result column="reg_ip" property="regIp" jdbcType="VARCHAR" />
+    <result column="login_count" property="loginCount" jdbcType="INTEGER" />
+    <result column="mm_ys" property="mmYs" jdbcType="VARCHAR" />
+    <result column="login_ip" property="loginIp" jdbcType="VARCHAR" />
+    <result column="mobile_true" property="mobileTrue" jdbcType="VARCHAR" />
+    <result column="mobile_have_verified" property="mobileHaveVerified" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    user_info_id, category, login_code, password, apply_user_personal_idcard, apply_user_id, 
+    corp_dljg_id, name, gender, mobile, telephone, qq, reg_date, status, active_code, 
+    is_corp_admin, other_corp_name, last_login_date, parent_id, membership_level, reg_ip, 
+    login_count, mm_ys, login_ip, mobile_true, mobile_have_verified, create_time, update_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yundata.metadata.model.po.UserInfoPOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from user_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_info
+    where user_info_id = #{userInfoId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from user_info
+    where user_info_id = #{userInfoId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yundata.metadata.model.po.UserInfoPOExample" >
+    delete from user_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yundata.metadata.model.po.UserInfoPO" >
+    insert into user_info (user_info_id, category, login_code, 
+      password, apply_user_personal_idcard, apply_user_id, 
+      corp_dljg_id, name, gender, 
+      mobile, telephone, qq, 
+      reg_date, status, active_code, 
+      is_corp_admin, other_corp_name, last_login_date, 
+      parent_id, membership_level, reg_ip, 
+      login_count, mm_ys, login_ip, 
+      mobile_true, mobile_have_verified, create_time, 
+      update_time)
+    values (#{userInfoId,jdbcType=VARCHAR}, #{category,jdbcType=INTEGER}, #{loginCode,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{applyUserPersonalIdcard,jdbcType=VARCHAR}, #{applyUserId,jdbcType=VARCHAR}, 
+      #{corpDljgId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, 
+      #{mobile,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, 
+      #{regDate,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{activeCode,jdbcType=VARCHAR}, 
+      #{isCorpAdmin,jdbcType=INTEGER}, #{otherCorpName,jdbcType=VARCHAR}, #{lastLoginDate,jdbcType=TIMESTAMP}, 
+      #{parentId,jdbcType=VARCHAR}, #{membershipLevel,jdbcType=VARCHAR}, #{regIp,jdbcType=VARCHAR}, 
+      #{loginCount,jdbcType=INTEGER}, #{mmYs,jdbcType=VARCHAR}, #{loginIp,jdbcType=VARCHAR}, 
+      #{mobileTrue,jdbcType=VARCHAR}, #{mobileHaveVerified,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yundata.metadata.model.po.UserInfoPO" >
+    insert into user_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userInfoId != null" >
+        user_info_id,
+      </if>
+      <if test="category != null" >
+        category,
+      </if>
+      <if test="loginCode != null" >
+        login_code,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="applyUserPersonalIdcard != null" >
+        apply_user_personal_idcard,
+      </if>
+      <if test="applyUserId != null" >
+        apply_user_id,
+      </if>
+      <if test="corpDljgId != null" >
+        corp_dljg_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="qq != null" >
+        qq,
+      </if>
+      <if test="regDate != null" >
+        reg_date,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="activeCode != null" >
+        active_code,
+      </if>
+      <if test="isCorpAdmin != null" >
+        is_corp_admin,
+      </if>
+      <if test="otherCorpName != null" >
+        other_corp_name,
+      </if>
+      <if test="lastLoginDate != null" >
+        last_login_date,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="membershipLevel != null" >
+        membership_level,
+      </if>
+      <if test="regIp != null" >
+        reg_ip,
+      </if>
+      <if test="loginCount != null" >
+        login_count,
+      </if>
+      <if test="mmYs != null" >
+        mm_ys,
+      </if>
+      <if test="loginIp != null" >
+        login_ip,
+      </if>
+      <if test="mobileTrue != null" >
+        mobile_true,
+      </if>
+      <if test="mobileHaveVerified != null" >
+        mobile_have_verified,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userInfoId != null" >
+        #{userInfoId,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null" >
+        #{category,jdbcType=INTEGER},
+      </if>
+      <if test="loginCode != null" >
+        #{loginCode,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="applyUserPersonalIdcard != null" >
+        #{applyUserPersonalIdcard,jdbcType=VARCHAR},
+      </if>
+      <if test="applyUserId != null" >
+        #{applyUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="corpDljgId != null" >
+        #{corpDljgId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="regDate != null" >
+        #{regDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="activeCode != null" >
+        #{activeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="isCorpAdmin != null" >
+        #{isCorpAdmin,jdbcType=INTEGER},
+      </if>
+      <if test="otherCorpName != null" >
+        #{otherCorpName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginDate != null" >
+        #{lastLoginDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="membershipLevel != null" >
+        #{membershipLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="regIp != null" >
+        #{regIp,jdbcType=VARCHAR},
+      </if>
+      <if test="loginCount != null" >
+        #{loginCount,jdbcType=INTEGER},
+      </if>
+      <if test="mmYs != null" >
+        #{mmYs,jdbcType=VARCHAR},
+      </if>
+      <if test="loginIp != null" >
+        #{loginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileTrue != null" >
+        #{mobileTrue,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileHaveVerified != null" >
+        #{mobileHaveVerified,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yundata.metadata.model.po.UserInfoPOExample" resultType="java.lang.Integer" >
+    select count(*) from user_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update user_info
+    <set >
+      <if test="record.userInfoId != null" >
+        user_info_id = #{record.userInfoId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.category != null" >
+        category = #{record.category,jdbcType=INTEGER},
+      </if>
+      <if test="record.loginCode != null" >
+        login_code = #{record.loginCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null" >
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.applyUserPersonalIdcard != null" >
+        apply_user_personal_idcard = #{record.applyUserPersonalIdcard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.applyUserId != null" >
+        apply_user_id = #{record.applyUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.corpDljgId != null" >
+        corp_dljg_id = #{record.corpDljgId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gender != null" >
+        gender = #{record.gender,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mobile != null" >
+        mobile = #{record.mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.telephone != null" >
+        telephone = #{record.telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qq != null" >
+        qq = #{record.qq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.regDate != null" >
+        reg_date = #{record.regDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.activeCode != null" >
+        active_code = #{record.activeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isCorpAdmin != null" >
+        is_corp_admin = #{record.isCorpAdmin,jdbcType=INTEGER},
+      </if>
+      <if test="record.otherCorpName != null" >
+        other_corp_name = #{record.otherCorpName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastLoginDate != null" >
+        last_login_date = #{record.lastLoginDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.parentId != null" >
+        parent_id = #{record.parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.membershipLevel != null" >
+        membership_level = #{record.membershipLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.regIp != null" >
+        reg_ip = #{record.regIp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.loginCount != null" >
+        login_count = #{record.loginCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.mmYs != null" >
+        mm_ys = #{record.mmYs,jdbcType=VARCHAR},
+      </if>
+      <if test="record.loginIp != null" >
+        login_ip = #{record.loginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mobileTrue != null" >
+        mobile_true = #{record.mobileTrue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mobileHaveVerified != null" >
+        mobile_have_verified = #{record.mobileHaveVerified,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update user_info
+    set user_info_id = #{record.userInfoId,jdbcType=VARCHAR},
+      category = #{record.category,jdbcType=INTEGER},
+      login_code = #{record.loginCode,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
+      apply_user_personal_idcard = #{record.applyUserPersonalIdcard,jdbcType=VARCHAR},
+      apply_user_id = #{record.applyUserId,jdbcType=VARCHAR},
+      corp_dljg_id = #{record.corpDljgId,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      gender = #{record.gender,jdbcType=VARCHAR},
+      mobile = #{record.mobile,jdbcType=VARCHAR},
+      telephone = #{record.telephone,jdbcType=VARCHAR},
+      qq = #{record.qq,jdbcType=VARCHAR},
+      reg_date = #{record.regDate,jdbcType=TIMESTAMP},
+      status = #{record.status,jdbcType=INTEGER},
+      active_code = #{record.activeCode,jdbcType=VARCHAR},
+      is_corp_admin = #{record.isCorpAdmin,jdbcType=INTEGER},
+      other_corp_name = #{record.otherCorpName,jdbcType=VARCHAR},
+      last_login_date = #{record.lastLoginDate,jdbcType=TIMESTAMP},
+      parent_id = #{record.parentId,jdbcType=VARCHAR},
+      membership_level = #{record.membershipLevel,jdbcType=VARCHAR},
+      reg_ip = #{record.regIp,jdbcType=VARCHAR},
+      login_count = #{record.loginCount,jdbcType=INTEGER},
+      mm_ys = #{record.mmYs,jdbcType=VARCHAR},
+      login_ip = #{record.loginIp,jdbcType=VARCHAR},
+      mobile_true = #{record.mobileTrue,jdbcType=VARCHAR},
+      mobile_have_verified = #{record.mobileHaveVerified,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yundata.metadata.model.po.UserInfoPO" >
+    update user_info
+    <set >
+      <if test="category != null" >
+        category = #{category,jdbcType=INTEGER},
+      </if>
+      <if test="loginCode != null" >
+        login_code = #{loginCode,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="applyUserPersonalIdcard != null" >
+        apply_user_personal_idcard = #{applyUserPersonalIdcard,jdbcType=VARCHAR},
+      </if>
+      <if test="applyUserId != null" >
+        apply_user_id = #{applyUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="corpDljgId != null" >
+        corp_dljg_id = #{corpDljgId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="regDate != null" >
+        reg_date = #{regDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="activeCode != null" >
+        active_code = #{activeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="isCorpAdmin != null" >
+        is_corp_admin = #{isCorpAdmin,jdbcType=INTEGER},
+      </if>
+      <if test="otherCorpName != null" >
+        other_corp_name = #{otherCorpName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginDate != null" >
+        last_login_date = #{lastLoginDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="membershipLevel != null" >
+        membership_level = #{membershipLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="regIp != null" >
+        reg_ip = #{regIp,jdbcType=VARCHAR},
+      </if>
+      <if test="loginCount != null" >
+        login_count = #{loginCount,jdbcType=INTEGER},
+      </if>
+      <if test="mmYs != null" >
+        mm_ys = #{mmYs,jdbcType=VARCHAR},
+      </if>
+      <if test="loginIp != null" >
+        login_ip = #{loginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileTrue != null" >
+        mobile_true = #{mobileTrue,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileHaveVerified != null" >
+        mobile_have_verified = #{mobileHaveVerified,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where user_info_id = #{userInfoId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yundata.metadata.model.po.UserInfoPO" >
+    update user_info
+    set category = #{category,jdbcType=INTEGER},
+      login_code = #{loginCode,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      apply_user_personal_idcard = #{applyUserPersonalIdcard,jdbcType=VARCHAR},
+      apply_user_id = #{applyUserId,jdbcType=VARCHAR},
+      corp_dljg_id = #{corpDljgId,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      qq = #{qq,jdbcType=VARCHAR},
+      reg_date = #{regDate,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      active_code = #{activeCode,jdbcType=VARCHAR},
+      is_corp_admin = #{isCorpAdmin,jdbcType=INTEGER},
+      other_corp_name = #{otherCorpName,jdbcType=VARCHAR},
+      last_login_date = #{lastLoginDate,jdbcType=TIMESTAMP},
+      parent_id = #{parentId,jdbcType=VARCHAR},
+      membership_level = #{membershipLevel,jdbcType=VARCHAR},
+      reg_ip = #{regIp,jdbcType=VARCHAR},
+      login_count = #{loginCount,jdbcType=INTEGER},
+      mm_ys = #{mmYs,jdbcType=VARCHAR},
+      login_ip = #{loginIp,jdbcType=VARCHAR},
+      mobile_true = #{mobileTrue,jdbcType=VARCHAR},
+      mobile_have_verified = #{mobileHaveVerified,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where user_info_id = #{userInfoId,jdbcType=VARCHAR}
+  </update>
+</mapper>

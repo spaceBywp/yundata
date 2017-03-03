@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="admin-server" />
+        <module name="compute-service" />
+        <module name="config-server" />
+        <module name="eureka-server" />
+        <module name="feign-server" />
+        <module name="file-server" />
+        <module name="turbine-server" />
+        <module name="yundata-common" />
+        <module name="yundata-metadata-generator" />
+        <module name="yundata-metadata-mapper" />
+        <module name="yundata-metadata-model" />
+        <module name="zuul-server" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="admin-server" target="1.6" />
+      <module name="compute-service" target="1.6" />
+      <module name="config-server" target="1.6" />
+      <module name="eureka-server" target="1.6" />
+      <module name="feign-server" target="1.6" />
+      <module name="file-server" target="1.6" />
+      <module name="turbine-server" target="1.6" />
+      <module name="yundata-common" target="1.5" />
+      <module name="yundata-matedata" target="1.5" />
+      <module name="yundata-metadata-generator" target="1.5" />
+      <module name="yundata-metadata-mapper" target="1.7" />
+      <module name="yundata-metadata-model" target="1.7" />
+      <module name="yundata-parent" target="1.6" />
+      <module name="zuul-server" target="1.6" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

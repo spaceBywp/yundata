@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yundata.metadata.dao.mapper.DictIndustryGjflPOMapper" >
+  <resultMap id="BaseResultMap" type="com.yundata.metadata.model.po.DictIndustryGjflPO" >
+    <result column="id" property="id" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="gjfls" property="gjfls" jdbcType="VARCHAR" />
+    <result column="related_gjfls" property="relatedGjfls" jdbcType="VARCHAR" />
+    <result column="amount" property="amount" jdbcType="DOUBLE" />
+    <result column="gjfls_name" property="gjflsName" jdbcType="VARCHAR" />
+    <result column="related_gjfls_name" property="relatedGjflsName" jdbcType="VARCHAR" />
+    <result column="display_order" property="displayOrder" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, name, gjfls, related_gjfls, amount, gjfls_name, related_gjfls_name, display_order
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yundata.metadata.model.po.DictIndustryGjflPOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from dict_industry_gjfl
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.yundata.metadata.model.po.DictIndustryGjflPOExample" >
+    delete from dict_industry_gjfl
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yundata.metadata.model.po.DictIndustryGjflPO" >
+    insert into dict_industry_gjfl (id, name, gjfls, 
+      related_gjfls, amount, gjfls_name, 
+      related_gjfls_name, display_order)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{gjfls,jdbcType=VARCHAR}, 
+      #{relatedGjfls,jdbcType=VARCHAR}, #{amount,jdbcType=DOUBLE}, #{gjflsName,jdbcType=VARCHAR}, 
+      #{relatedGjflsName,jdbcType=VARCHAR}, #{displayOrder,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yundata.metadata.model.po.DictIndustryGjflPO" >
+    insert into dict_industry_gjfl
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="gjfls != null" >
+        gjfls,
+      </if>
+      <if test="relatedGjfls != null" >
+        related_gjfls,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="gjflsName != null" >
+        gjfls_name,
+      </if>
+      <if test="relatedGjflsName != null" >
+        related_gjfls_name,
+      </if>
+      <if test="displayOrder != null" >
+        display_order,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gjfls != null" >
+        #{gjfls,jdbcType=VARCHAR},
+      </if>
+      <if test="relatedGjfls != null" >
+        #{relatedGjfls,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="gjflsName != null" >
+        #{gjflsName,jdbcType=VARCHAR},
+      </if>
+      <if test="relatedGjflsName != null" >
+        #{relatedGjflsName,jdbcType=VARCHAR},
+      </if>
+      <if test="displayOrder != null" >
+        #{displayOrder,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yundata.metadata.model.po.DictIndustryGjflPOExample" resultType="java.lang.Integer" >
+    select count(*) from dict_industry_gjfl
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update dict_industry_gjfl
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gjfls != null" >
+        gjfls = #{record.gjfls,jdbcType=VARCHAR},
+      </if>
+      <if test="record.relatedGjfls != null" >
+        related_gjfls = #{record.relatedGjfls,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amount != null" >
+        amount = #{record.amount,jdbcType=DOUBLE},
+      </if>
+      <if test="record.gjflsName != null" >
+        gjfls_name = #{record.gjflsName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.relatedGjflsName != null" >
+        related_gjfls_name = #{record.relatedGjflsName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.displayOrder != null" >
+        display_order = #{record.displayOrder,jdbcType=DOUBLE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update dict_industry_gjfl
+    set id = #{record.id,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      gjfls = #{record.gjfls,jdbcType=VARCHAR},
+      related_gjfls = #{record.relatedGjfls,jdbcType=VARCHAR},
+      amount = #{record.amount,jdbcType=DOUBLE},
+      gjfls_name = #{record.gjflsName,jdbcType=VARCHAR},
+      related_gjfls_name = #{record.relatedGjflsName,jdbcType=VARCHAR},
+      display_order = #{record.displayOrder,jdbcType=DOUBLE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

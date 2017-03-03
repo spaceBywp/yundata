@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yundata.metadata.dao.mapper.SbggRankingStatisticsPOMapper" >
+  <resultMap id="BaseResultMap" type="com.yundata.metadata.model.po.SbggRankingStatisticsPO" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="dlrmc" property="dlrmc" jdbcType="VARCHAR" />
+    <result column="shengfen" property="shengfen" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="chushen_count" property="chushenCount" jdbcType="INTEGER" />
+    <result column="sbggqh" property="sbggqh" jdbcType="INTEGER" />
+    <result column="weici" property="weici" jdbcType="INTEGER" />
+    <result column="simple_name" property="simpleName" jdbcType="VARCHAR" />
+    <result column="last_weici" property="lastWeici" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, dlrmc, shengfen, city, chushen_count, sbggqh, weici, simple_name, last_weici
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yundata.metadata.model.po.SbggRankingStatisticsPOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sbgg_ranking_statistics
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sbgg_ranking_statistics
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sbgg_ranking_statistics
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yundata.metadata.model.po.SbggRankingStatisticsPOExample" >
+    delete from sbgg_ranking_statistics
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yundata.metadata.model.po.SbggRankingStatisticsPO" >
+    insert into sbgg_ranking_statistics (id, dlrmc, shengfen, 
+      city, chushen_count, sbggqh, 
+      weici, simple_name, last_weici
+      )
+    values (#{id,jdbcType=VARCHAR}, #{dlrmc,jdbcType=VARCHAR}, #{shengfen,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{chushenCount,jdbcType=INTEGER}, #{sbggqh,jdbcType=INTEGER}, 
+      #{weici,jdbcType=INTEGER}, #{simpleName,jdbcType=VARCHAR}, #{lastWeici,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yundata.metadata.model.po.SbggRankingStatisticsPO" >
+    insert into sbgg_ranking_statistics
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="dlrmc != null" >
+        dlrmc,
+      </if>
+      <if test="shengfen != null" >
+        shengfen,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="chushenCount != null" >
+        chushen_count,
+      </if>
+      <if test="sbggqh != null" >
+        sbggqh,
+      </if>
+      <if test="weici != null" >
+        weici,
+      </if>
+      <if test="simpleName != null" >
+        simple_name,
+      </if>
+      <if test="lastWeici != null" >
+        last_weici,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="dlrmc != null" >
+        #{dlrmc,jdbcType=VARCHAR},
+      </if>
+      <if test="shengfen != null" >
+        #{shengfen,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="chushenCount != null" >
+        #{chushenCount,jdbcType=INTEGER},
+      </if>
+      <if test="sbggqh != null" >
+        #{sbggqh,jdbcType=INTEGER},
+      </if>
+      <if test="weici != null" >
+        #{weici,jdbcType=INTEGER},
+      </if>
+      <if test="simpleName != null" >
+        #{simpleName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastWeici != null" >
+        #{lastWeici,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yundata.metadata.model.po.SbggRankingStatisticsPOExample" resultType="java.lang.Integer" >
+    select count(*) from sbgg_ranking_statistics
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sbgg_ranking_statistics
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dlrmc != null" >
+        dlrmc = #{record.dlrmc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shengfen != null" >
+        shengfen = #{record.shengfen,jdbcType=VARCHAR},
+      </if>
+      <if test="record.city != null" >
+        city = #{record.city,jdbcType=VARCHAR},
+      </if>
+      <if test="record.chushenCount != null" >
+        chushen_count = #{record.chushenCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.sbggqh != null" >
+        sbggqh = #{record.sbggqh,jdbcType=INTEGER},
+      </if>
+      <if test="record.weici != null" >
+        weici = #{record.weici,jdbcType=INTEGER},
+      </if>
+      <if test="record.simpleName != null" >
+        simple_name = #{record.simpleName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastWeici != null" >
+        last_weici = #{record.lastWeici,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sbgg_ranking_statistics
+    set id = #{record.id,jdbcType=VARCHAR},
+      dlrmc = #{record.dlrmc,jdbcType=VARCHAR},
+      shengfen = #{record.shengfen,jdbcType=VARCHAR},
+      city = #{record.city,jdbcType=VARCHAR},
+      chushen_count = #{record.chushenCount,jdbcType=INTEGER},
+      sbggqh = #{record.sbggqh,jdbcType=INTEGER},
+      weici = #{record.weici,jdbcType=INTEGER},
+      simple_name = #{record.simpleName,jdbcType=VARCHAR},
+      last_weici = #{record.lastWeici,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yundata.metadata.model.po.SbggRankingStatisticsPO" >
+    update sbgg_ranking_statistics
+    <set >
+      <if test="dlrmc != null" >
+        dlrmc = #{dlrmc,jdbcType=VARCHAR},
+      </if>
+      <if test="shengfen != null" >
+        shengfen = #{shengfen,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="chushenCount != null" >
+        chushen_count = #{chushenCount,jdbcType=INTEGER},
+      </if>
+      <if test="sbggqh != null" >
+        sbggqh = #{sbggqh,jdbcType=INTEGER},
+      </if>
+      <if test="weici != null" >
+        weici = #{weici,jdbcType=INTEGER},
+      </if>
+      <if test="simpleName != null" >
+        simple_name = #{simpleName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastWeici != null" >
+        last_weici = #{lastWeici,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yundata.metadata.model.po.SbggRankingStatisticsPO" >
+    update sbgg_ranking_statistics
+    set dlrmc = #{dlrmc,jdbcType=VARCHAR},
+      shengfen = #{shengfen,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      chushen_count = #{chushenCount,jdbcType=INTEGER},
+      sbggqh = #{sbggqh,jdbcType=INTEGER},
+      weici = #{weici,jdbcType=INTEGER},
+      simple_name = #{simpleName,jdbcType=VARCHAR},
+      last_weici = #{lastWeici,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

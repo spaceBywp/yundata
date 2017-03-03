@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yundata.metadata.dao.mapper.BrandInfoStatusinfoPOMapper" >
+  <resultMap id="BaseResultMap" type="com.yundata.metadata.model.po.BrandInfoStatusinfoPO" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="zch" property="zch" jdbcType="VARCHAR" />
+    <result column="gjfl" property="gjfl" jdbcType="VARCHAR" />
+    <result column="new_process_date" property="newProcessDate" jdbcType="TIMESTAMP" />
+    <result column="lastsblcitem" property="lastsblcitem" jdbcType="CHAR" />
+    <result column="status" property="status" jdbcType="DOUBLE" />
+    <result column="last_update_date" property="lastUpdateDate" jdbcType="TIMESTAMP" />
+    <result column="progress" property="progress" jdbcType="DOUBLE" />
+    <result column="new_process" property="newProcess" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, zch, gjfl, new_process_date, lastsblcitem, status, last_update_date, progress, 
+    new_process
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yundata.metadata.model.po.BrandInfoStatusinfoPOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from brand_info_statusinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from brand_info_statusinfo
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from brand_info_statusinfo
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yundata.metadata.model.po.BrandInfoStatusinfoPOExample" >
+    delete from brand_info_statusinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yundata.metadata.model.po.BrandInfoStatusinfoPO" >
+    insert into brand_info_statusinfo (id, zch, gjfl, 
+      new_process_date, lastsblcitem, status, 
+      last_update_date, progress, new_process
+      )
+    values (#{id,jdbcType=VARCHAR}, #{zch,jdbcType=VARCHAR}, #{gjfl,jdbcType=VARCHAR}, 
+      #{newProcessDate,jdbcType=TIMESTAMP}, #{lastsblcitem,jdbcType=CHAR}, #{status,jdbcType=DOUBLE}, 
+      #{lastUpdateDate,jdbcType=TIMESTAMP}, #{progress,jdbcType=DOUBLE}, #{newProcess,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yundata.metadata.model.po.BrandInfoStatusinfoPO" >
+    insert into brand_info_statusinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="zch != null" >
+        zch,
+      </if>
+      <if test="gjfl != null" >
+        gjfl,
+      </if>
+      <if test="newProcessDate != null" >
+        new_process_date,
+      </if>
+      <if test="lastsblcitem != null" >
+        lastsblcitem,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="lastUpdateDate != null" >
+        last_update_date,
+      </if>
+      <if test="progress != null" >
+        progress,
+      </if>
+      <if test="newProcess != null" >
+        new_process,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="zch != null" >
+        #{zch,jdbcType=VARCHAR},
+      </if>
+      <if test="gjfl != null" >
+        #{gjfl,jdbcType=VARCHAR},
+      </if>
+      <if test="newProcessDate != null" >
+        #{newProcessDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastsblcitem != null" >
+        #{lastsblcitem,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=DOUBLE},
+      </if>
+      <if test="lastUpdateDate != null" >
+        #{lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="progress != null" >
+        #{progress,jdbcType=DOUBLE},
+      </if>
+      <if test="newProcess != null" >
+        #{newProcess,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yundata.metadata.model.po.BrandInfoStatusinfoPOExample" resultType="java.lang.Integer" >
+    select count(*) from brand_info_statusinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update brand_info_statusinfo
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zch != null" >
+        zch = #{record.zch,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gjfl != null" >
+        gjfl = #{record.gjfl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.newProcessDate != null" >
+        new_process_date = #{record.newProcessDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lastsblcitem != null" >
+        lastsblcitem = #{record.lastsblcitem,jdbcType=CHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=DOUBLE},
+      </if>
+      <if test="record.lastUpdateDate != null" >
+        last_update_date = #{record.lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.progress != null" >
+        progress = #{record.progress,jdbcType=DOUBLE},
+      </if>
+      <if test="record.newProcess != null" >
+        new_process = #{record.newProcess,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update brand_info_statusinfo
+    set id = #{record.id,jdbcType=VARCHAR},
+      zch = #{record.zch,jdbcType=VARCHAR},
+      gjfl = #{record.gjfl,jdbcType=VARCHAR},
+      new_process_date = #{record.newProcessDate,jdbcType=TIMESTAMP},
+      lastsblcitem = #{record.lastsblcitem,jdbcType=CHAR},
+      status = #{record.status,jdbcType=DOUBLE},
+      last_update_date = #{record.lastUpdateDate,jdbcType=TIMESTAMP},
+      progress = #{record.progress,jdbcType=DOUBLE},
+      new_process = #{record.newProcess,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yundata.metadata.model.po.BrandInfoStatusinfoPO" >
+    update brand_info_statusinfo
+    <set >
+      <if test="zch != null" >
+        zch = #{zch,jdbcType=VARCHAR},
+      </if>
+      <if test="gjfl != null" >
+        gjfl = #{gjfl,jdbcType=VARCHAR},
+      </if>
+      <if test="newProcessDate != null" >
+        new_process_date = #{newProcessDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastsblcitem != null" >
+        lastsblcitem = #{lastsblcitem,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=DOUBLE},
+      </if>
+      <if test="lastUpdateDate != null" >
+        last_update_date = #{lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="progress != null" >
+        progress = #{progress,jdbcType=DOUBLE},
+      </if>
+      <if test="newProcess != null" >
+        new_process = #{newProcess,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yundata.metadata.model.po.BrandInfoStatusinfoPO" >
+    update brand_info_statusinfo
+    set zch = #{zch,jdbcType=VARCHAR},
+      gjfl = #{gjfl,jdbcType=VARCHAR},
+      new_process_date = #{newProcessDate,jdbcType=TIMESTAMP},
+      lastsblcitem = #{lastsblcitem,jdbcType=CHAR},
+      status = #{status,jdbcType=DOUBLE},
+      last_update_date = #{lastUpdateDate,jdbcType=TIMESTAMP},
+      progress = #{progress,jdbcType=DOUBLE},
+      new_process = #{newProcess,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

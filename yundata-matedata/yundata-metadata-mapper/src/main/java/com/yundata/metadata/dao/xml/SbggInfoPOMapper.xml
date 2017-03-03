@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yundata.metadata.dao.mapper.SbggInfoPOMapper" >
+  <resultMap id="BaseResultMap" type="com.yundata.metadata.model.po.SbggInfoPO" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="brand_name" property="brandName" jdbcType="VARCHAR" />
+    <result column="brand_type" property="brandType" jdbcType="VARCHAR" />
+    <result column="brand_group" property="brandGroup" jdbcType="VARCHAR" />
+    <result column="apply_date" property="applyDate" jdbcType="DATE" />
+    <result column="regist_num" property="registNum" jdbcType="VARCHAR" />
+    <result column="registrant_name_id_card" property="registrantNameIdCard" jdbcType="VARCHAR" />
+    <result column="registrant_name" property="registrantName" jdbcType="VARCHAR" />
+    <result column="admin_user_info_id" property="adminUserInfoId" jdbcType="VARCHAR" />
+    <result column="child_user_info_id" property="childUserInfoId" jdbcType="VARCHAR" />
+    <result column="brand_status" property="brandStatus" jdbcType="INTEGER" />
+    <result column="apply_id" property="applyId" jdbcType="VARCHAR" />
+    <result column="is_monitor" property="isMonitor" jdbcType="INTEGER" />
+    <result column="is_attention" property="isAttention" jdbcType="INTEGER" />
+    <result column="remind" property="remind" jdbcType="VARCHAR" />
+    <result column="add_time" property="addTime" jdbcType="TIMESTAMP" />
+    <result column="add_user_id" property="addUserId" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="update_user_id" property="updateUserId" jdbcType="VARCHAR" />
+    <result column="is_del" property="isDel" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, brand_name, brand_type, brand_group, apply_date, regist_num, registrant_name_id_card, 
+    registrant_name, admin_user_info_id, child_user_info_id, brand_status, apply_id, 
+    is_monitor, is_attention, remind, add_time, add_user_id, update_time, update_user_id, 
+    is_del
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yundata.metadata.model.po.SbggInfoPOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sbgg_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sbgg_info
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sbgg_info
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yundata.metadata.model.po.SbggInfoPOExample" >
+    delete from sbgg_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yundata.metadata.model.po.SbggInfoPO" >
+    insert into sbgg_info (id, brand_name, brand_type, 
+      brand_group, apply_date, regist_num, 
+      registrant_name_id_card, registrant_name, admin_user_info_id, 
+      child_user_info_id, brand_status, apply_id, 
+      is_monitor, is_attention, remind, 
+      add_time, add_user_id, update_time, 
+      update_user_id, is_del)
+    values (#{id,jdbcType=VARCHAR}, #{brandName,jdbcType=VARCHAR}, #{brandType,jdbcType=VARCHAR}, 
+      #{brandGroup,jdbcType=VARCHAR}, #{applyDate,jdbcType=DATE}, #{registNum,jdbcType=VARCHAR}, 
+      #{registrantNameIdCard,jdbcType=VARCHAR}, #{registrantName,jdbcType=VARCHAR}, #{adminUserInfoId,jdbcType=VARCHAR}, 
+      #{childUserInfoId,jdbcType=VARCHAR}, #{brandStatus,jdbcType=INTEGER}, #{applyId,jdbcType=VARCHAR}, 
+      #{isMonitor,jdbcType=INTEGER}, #{isAttention,jdbcType=INTEGER}, #{remind,jdbcType=VARCHAR}, 
+      #{addTime,jdbcType=TIMESTAMP}, #{addUserId,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{updateUserId,jdbcType=VARCHAR}, #{isDel,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yundata.metadata.model.po.SbggInfoPO" >
+    insert into sbgg_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="brandName != null" >
+        brand_name,
+      </if>
+      <if test="brandType != null" >
+        brand_type,
+      </if>
+      <if test="brandGroup != null" >
+        brand_group,
+      </if>
+      <if test="applyDate != null" >
+        apply_date,
+      </if>
+      <if test="registNum != null" >
+        regist_num,
+      </if>
+      <if test="registrantNameIdCard != null" >
+        registrant_name_id_card,
+      </if>
+      <if test="registrantName != null" >
+        registrant_name,
+      </if>
+      <if test="adminUserInfoId != null" >
+        admin_user_info_id,
+      </if>
+      <if test="childUserInfoId != null" >
+        child_user_info_id,
+      </if>
+      <if test="brandStatus != null" >
+        brand_status,
+      </if>
+      <if test="applyId != null" >
+        apply_id,
+      </if>
+      <if test="isMonitor != null" >
+        is_monitor,
+      </if>
+      <if test="isAttention != null" >
+        is_attention,
+      </if>
+      <if test="remind != null" >
+        remind,
+      </if>
+      <if test="addTime != null" >
+        add_time,
+      </if>
+      <if test="addUserId != null" >
+        add_user_id,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id,
+      </if>
+      <if test="isDel != null" >
+        is_del,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="brandName != null" >
+        #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="brandType != null" >
+        #{brandType,jdbcType=VARCHAR},
+      </if>
+      <if test="brandGroup != null" >
+        #{brandGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="applyDate != null" >
+        #{applyDate,jdbcType=DATE},
+      </if>
+      <if test="registNum != null" >
+        #{registNum,jdbcType=VARCHAR},
+      </if>
+      <if test="registrantNameIdCard != null" >
+        #{registrantNameIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="registrantName != null" >
+        #{registrantName,jdbcType=VARCHAR},
+      </if>
+      <if test="adminUserInfoId != null" >
+        #{adminUserInfoId,jdbcType=VARCHAR},
+      </if>
+      <if test="childUserInfoId != null" >
+        #{childUserInfoId,jdbcType=VARCHAR},
+      </if>
+      <if test="brandStatus != null" >
+        #{brandStatus,jdbcType=INTEGER},
+      </if>
+      <if test="applyId != null" >
+        #{applyId,jdbcType=VARCHAR},
+      </if>
+      <if test="isMonitor != null" >
+        #{isMonitor,jdbcType=INTEGER},
+      </if>
+      <if test="isAttention != null" >
+        #{isAttention,jdbcType=INTEGER},
+      </if>
+      <if test="remind != null" >
+        #{remind,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addUserId != null" >
+        #{addUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null" >
+        #{updateUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="isDel != null" >
+        #{isDel,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yundata.metadata.model.po.SbggInfoPOExample" resultType="java.lang.Integer" >
+    select count(*) from sbgg_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sbgg_info
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.brandName != null" >
+        brand_name = #{record.brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.brandType != null" >
+        brand_type = #{record.brandType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.brandGroup != null" >
+        brand_group = #{record.brandGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="record.applyDate != null" >
+        apply_date = #{record.applyDate,jdbcType=DATE},
+      </if>
+      <if test="record.registNum != null" >
+        regist_num = #{record.registNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.registrantNameIdCard != null" >
+        registrant_name_id_card = #{record.registrantNameIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.registrantName != null" >
+        registrant_name = #{record.registrantName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.adminUserInfoId != null" >
+        admin_user_info_id = #{record.adminUserInfoId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.childUserInfoId != null" >
+        child_user_info_id = #{record.childUserInfoId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.brandStatus != null" >
+        brand_status = #{record.brandStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.applyId != null" >
+        apply_id = #{record.applyId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isMonitor != null" >
+        is_monitor = #{record.isMonitor,jdbcType=INTEGER},
+      </if>
+      <if test="record.isAttention != null" >
+        is_attention = #{record.isAttention,jdbcType=INTEGER},
+      </if>
+      <if test="record.remind != null" >
+        remind = #{record.remind,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addTime != null" >
+        add_time = #{record.addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.addUserId != null" >
+        add_user_id = #{record.addUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateUserId != null" >
+        update_user_id = #{record.updateUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isDel != null" >
+        is_del = #{record.isDel,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sbgg_info
+    set id = #{record.id,jdbcType=VARCHAR},
+      brand_name = #{record.brandName,jdbcType=VARCHAR},
+      brand_type = #{record.brandType,jdbcType=VARCHAR},
+      brand_group = #{record.brandGroup,jdbcType=VARCHAR},
+      apply_date = #{record.applyDate,jdbcType=DATE},
+      regist_num = #{record.registNum,jdbcType=VARCHAR},
+      registrant_name_id_card = #{record.registrantNameIdCard,jdbcType=VARCHAR},
+      registrant_name = #{record.registrantName,jdbcType=VARCHAR},
+      admin_user_info_id = #{record.adminUserInfoId,jdbcType=VARCHAR},
+      child_user_info_id = #{record.childUserInfoId,jdbcType=VARCHAR},
+      brand_status = #{record.brandStatus,jdbcType=INTEGER},
+      apply_id = #{record.applyId,jdbcType=VARCHAR},
+      is_monitor = #{record.isMonitor,jdbcType=INTEGER},
+      is_attention = #{record.isAttention,jdbcType=INTEGER},
+      remind = #{record.remind,jdbcType=VARCHAR},
+      add_time = #{record.addTime,jdbcType=TIMESTAMP},
+      add_user_id = #{record.addUserId,jdbcType=VARCHAR},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      update_user_id = #{record.updateUserId,jdbcType=VARCHAR},
+      is_del = #{record.isDel,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yundata.metadata.model.po.SbggInfoPO" >
+    update sbgg_info
+    <set >
+      <if test="brandName != null" >
+        brand_name = #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="brandType != null" >
+        brand_type = #{brandType,jdbcType=VARCHAR},
+      </if>
+      <if test="brandGroup != null" >
+        brand_group = #{brandGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="applyDate != null" >
+        apply_date = #{applyDate,jdbcType=DATE},
+      </if>
+      <if test="registNum != null" >
+        regist_num = #{registNum,jdbcType=VARCHAR},
+      </if>
+      <if test="registrantNameIdCard != null" >
+        registrant_name_id_card = #{registrantNameIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="registrantName != null" >
+        registrant_name = #{registrantName,jdbcType=VARCHAR},
+      </if>
+      <if test="adminUserInfoId != null" >
+        admin_user_info_id = #{adminUserInfoId,jdbcType=VARCHAR},
+      </if>
+      <if test="childUserInfoId != null" >
+        child_user_info_id = #{childUserInfoId,jdbcType=VARCHAR},
+      </if>
+      <if test="brandStatus != null" >
+        brand_status = #{brandStatus,jdbcType=INTEGER},
+      </if>
+      <if test="applyId != null" >
+        apply_id = #{applyId,jdbcType=VARCHAR},
+      </if>
+      <if test="isMonitor != null" >
+        is_monitor = #{isMonitor,jdbcType=INTEGER},
+      </if>
+      <if test="isAttention != null" >
+        is_attention = #{isAttention,jdbcType=INTEGER},
+      </if>
+      <if test="remind != null" >
+        remind = #{remind,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addUserId != null" >
+        add_user_id = #{addUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id = #{updateUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="isDel != null" >
+        is_del = #{isDel,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yundata.metadata.model.po.SbggInfoPO" >
+    update sbgg_info
+    set brand_name = #{brandName,jdbcType=VARCHAR},
+      brand_type = #{brandType,jdbcType=VARCHAR},
+      brand_group = #{brandGroup,jdbcType=VARCHAR},
+      apply_date = #{applyDate,jdbcType=DATE},
+      regist_num = #{registNum,jdbcType=VARCHAR},
+      registrant_name_id_card = #{registrantNameIdCard,jdbcType=VARCHAR},
+      registrant_name = #{registrantName,jdbcType=VARCHAR},
+      admin_user_info_id = #{adminUserInfoId,jdbcType=VARCHAR},
+      child_user_info_id = #{childUserInfoId,jdbcType=VARCHAR},
+      brand_status = #{brandStatus,jdbcType=INTEGER},
+      apply_id = #{applyId,jdbcType=VARCHAR},
+      is_monitor = #{isMonitor,jdbcType=INTEGER},
+      is_attention = #{isAttention,jdbcType=INTEGER},
+      remind = #{remind,jdbcType=VARCHAR},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      add_user_id = #{addUserId,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      update_user_id = #{updateUserId,jdbcType=VARCHAR},
+      is_del = #{isDel,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

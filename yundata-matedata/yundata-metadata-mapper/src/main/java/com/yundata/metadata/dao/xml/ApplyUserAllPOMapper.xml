@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yundata.metadata.dao.mapper.ApplyUserAllPOMapper" >
+  <resultMap id="BaseResultMap" type="com.yundata.metadata.model.po.ApplyUserAllPO" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="sqrmc_zw" property="sqrmcZw" jdbcType="VARCHAR" />
+    <result column="id_card_no" property="idCardNo" jdbcType="VARCHAR" />
+    <result column="brand_count" property="brandCount" jdbcType="DOUBLE" />
+    <result column="shengfen_code" property="shengfenCode" jdbcType="VARCHAR" />
+    <result column="filter_char" property="filterChar" jdbcType="VARCHAR" />
+    <result column="sqrmc_zw_id_card_no" property="sqrmcZwIdCardNo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, type, sqrmc_zw, id_card_no, brand_count, shengfen_code, filter_char, sqrmc_zw_id_card_no
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yundata.metadata.model.po.ApplyUserAllPOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from apply_user_all
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from apply_user_all
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from apply_user_all
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yundata.metadata.model.po.ApplyUserAllPOExample" >
+    delete from apply_user_all
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yundata.metadata.model.po.ApplyUserAllPO" >
+    insert into apply_user_all (id, type, sqrmc_zw, 
+      id_card_no, brand_count, shengfen_code, 
+      filter_char, sqrmc_zw_id_card_no)
+    values (#{id,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{sqrmcZw,jdbcType=VARCHAR}, 
+      #{idCardNo,jdbcType=VARCHAR}, #{brandCount,jdbcType=DOUBLE}, #{shengfenCode,jdbcType=VARCHAR}, 
+      #{filterChar,jdbcType=VARCHAR}, #{sqrmcZwIdCardNo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yundata.metadata.model.po.ApplyUserAllPO" >
+    insert into apply_user_all
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="sqrmcZw != null" >
+        sqrmc_zw,
+      </if>
+      <if test="idCardNo != null" >
+        id_card_no,
+      </if>
+      <if test="brandCount != null" >
+        brand_count,
+      </if>
+      <if test="shengfenCode != null" >
+        shengfen_code,
+      </if>
+      <if test="filterChar != null" >
+        filter_char,
+      </if>
+      <if test="sqrmcZwIdCardNo != null" >
+        sqrmc_zw_id_card_no,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="sqrmcZw != null" >
+        #{sqrmcZw,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardNo != null" >
+        #{idCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="brandCount != null" >
+        #{brandCount,jdbcType=DOUBLE},
+      </if>
+      <if test="shengfenCode != null" >
+        #{shengfenCode,jdbcType=VARCHAR},
+      </if>
+      <if test="filterChar != null" >
+        #{filterChar,jdbcType=VARCHAR},
+      </if>
+      <if test="sqrmcZwIdCardNo != null" >
+        #{sqrmcZwIdCardNo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yundata.metadata.model.po.ApplyUserAllPOExample" resultType="java.lang.Integer" >
+    select count(*) from apply_user_all
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update apply_user_all
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=INTEGER},
+      </if>
+      <if test="record.sqrmcZw != null" >
+        sqrmc_zw = #{record.sqrmcZw,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idCardNo != null" >
+        id_card_no = #{record.idCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.brandCount != null" >
+        brand_count = #{record.brandCount,jdbcType=DOUBLE},
+      </if>
+      <if test="record.shengfenCode != null" >
+        shengfen_code = #{record.shengfenCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.filterChar != null" >
+        filter_char = #{record.filterChar,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sqrmcZwIdCardNo != null" >
+        sqrmc_zw_id_card_no = #{record.sqrmcZwIdCardNo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update apply_user_all
+    set id = #{record.id,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=INTEGER},
+      sqrmc_zw = #{record.sqrmcZw,jdbcType=VARCHAR},
+      id_card_no = #{record.idCardNo,jdbcType=VARCHAR},
+      brand_count = #{record.brandCount,jdbcType=DOUBLE},
+      shengfen_code = #{record.shengfenCode,jdbcType=VARCHAR},
+      filter_char = #{record.filterChar,jdbcType=VARCHAR},
+      sqrmc_zw_id_card_no = #{record.sqrmcZwIdCardNo,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yundata.metadata.model.po.ApplyUserAllPO" >
+    update apply_user_all
+    <set >
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="sqrmcZw != null" >
+        sqrmc_zw = #{sqrmcZw,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardNo != null" >
+        id_card_no = #{idCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="brandCount != null" >
+        brand_count = #{brandCount,jdbcType=DOUBLE},
+      </if>
+      <if test="shengfenCode != null" >
+        shengfen_code = #{shengfenCode,jdbcType=VARCHAR},
+      </if>
+      <if test="filterChar != null" >
+        filter_char = #{filterChar,jdbcType=VARCHAR},
+      </if>
+      <if test="sqrmcZwIdCardNo != null" >
+        sqrmc_zw_id_card_no = #{sqrmcZwIdCardNo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yundata.metadata.model.po.ApplyUserAllPO" >
+    update apply_user_all
+    set type = #{type,jdbcType=INTEGER},
+      sqrmc_zw = #{sqrmcZw,jdbcType=VARCHAR},
+      id_card_no = #{idCardNo,jdbcType=VARCHAR},
+      brand_count = #{brandCount,jdbcType=DOUBLE},
+      shengfen_code = #{shengfenCode,jdbcType=VARCHAR},
+      filter_char = #{filterChar,jdbcType=VARCHAR},
+      sqrmc_zw_id_card_no = #{sqrmcZwIdCardNo,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
