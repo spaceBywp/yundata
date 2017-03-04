@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/yundata-parent/admin-server/admin-server.iml" filepath="$PROJECT_DIR$/yundata-parent/admin-server/admin-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/boot-server/boot-1/boot-1.iml" filepath="$PROJECT_DIR$/boot-server/boot-1/boot-1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/boot-server/boot-server.iml" filepath="$PROJECT_DIR$/boot-server/boot-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/yundata-parent/compute-service/compute-service.iml" filepath="$PROJECT_DIR$/yundata-parent/compute-service/compute-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/yundata-parent/config-server/config-server.iml" filepath="$PROJECT_DIR$/yundata-parent/config-server/config-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/yundata-parent/eureka-server/eureka-server.iml" filepath="$PROJECT_DIR$/yundata-parent/eureka-server/eureka-server.iml" />

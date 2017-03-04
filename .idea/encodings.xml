@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/boot-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/boot-server/boot-1" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/yundata-parent" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/yundata-parent/admin-server" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/yundata-parent/compute-service" charset="UTF-8" />
@@ -8,11 +10,8 @@
     <file url="file://$PROJECT_DIR$/yundata-parent/eureka-server" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/yundata-parent/feign-server" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/yundata-parent/file-server" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/yundata-parent/seulth-server" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/yundata-parent/turbine-server" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/yundata-parent/zipkin-server" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/yundata-parent/zuul-server" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/zipkin" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/zipkin" charset="UTF-8" />
   </component>
 </project>

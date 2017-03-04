@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/zipkin-server/pom.xml" />
         <option value="$PROJECT_DIR$/zipkin-demo/pom.xml" />
         <option value="$PROJECT_DIR$/zipkin/pom.xml" />
+        <option value="$PROJECT_DIR$/boot-server/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

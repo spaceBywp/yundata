@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="admin-server" />
+        <module name="boot-1" />
         <module name="compute-service" />
         <module name="config-server" />
         <module name="eureka-server" />
@@ -24,6 +25,8 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="admin-server" target="1.6" />
+      <module name="boot-1" target="1.8" />
+      <module name="boot-server" target="1.8" />
       <module name="compute-service" target="1.6" />
       <module name="config-server" target="1.6" />
       <module name="demo" target="1.6" />
