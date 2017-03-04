@@ -24,6 +24,8 @@ spring cloud demo
 
 
 1. yundata (根目录)
+    - boot-server(单纯的spring boot 服务而已)
+        1. boot-1 (单纯的spring boot 服务,有mongodb和StateMachine)
     - yundata-common（公用模块部分）
     - yundata-matedata（元数据部分）
         1. yundata-metadata-generator(mysql自动生成mapper/xml和model的工具项目)
